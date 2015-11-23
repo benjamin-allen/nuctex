@@ -10,6 +10,7 @@
 #include <cstdio>
 #include "output.hpp"
 
+// Generic print message function. Give it a string directly or give it a variable with a string in it.
 void Output::printMessage(const char* message) {
 	printf("%s\n", message);
 }

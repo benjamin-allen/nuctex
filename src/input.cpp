@@ -11,15 +11,17 @@
 #include <iostream>
 #include <string>
 
-const char* Input::getInput() {
-	std::string rawInput;
-	getline(std::cin, rawInput);
+// Catch-all function to capture a line of input.
+const char* Input::getInput() { 
+	std::string rawInput; // Create a string for the raw input
+	getline(std::cin, rawInput); // Get rawInput from the cin inputstream. 
 	
-	const char* returnedInput = rawInput.c_str();
+	const char* returnedInput = rawInput.c_str(); // Convert the string to a c-string
 	return returnedInput;
 }
 
+// Debugging function to ensure that input is being captured properly. Kept here for legacy purposes.
 void Input::printInputBack(const char* input) {
-	Output print;
-	print.printMessage(input);
+	Output print; // Very briefly allocate an output object.
+	print.printMessage(input); // print out that output object.
 }
