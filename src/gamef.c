@@ -7,6 +7,7 @@
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
+#include "command.h"
 
 int game_isQuit = 0;
 
@@ -17,7 +18,7 @@ void quit() {
 
 int gameLoop() {
 	while(game_isQuit != 1) {
-		printMessage(getInput());
+		callCommand(getInput());
 	}
 	return 0;
 }
