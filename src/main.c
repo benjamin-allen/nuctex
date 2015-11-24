@@ -1,15 +1,15 @@
 /*------------------------------------------------------------------------------
-| NuCTE		| input.hpp
+| NuCTE		| main.c
 | Author	| Benjamin E Allen
 | Date		| 22 November, 2015
 |-------------------------------------------------------------------------------
-| Overview	| Define the class used to handle player input.
+| Overview	| Initialize main game loop. Doesn't do much yet.
 \-----------------------------------------------------------------------------*/
 
-class Input {
-public:
-	const char* input;
+#include "io.h"
+#include "command.h"
 
-	const char* getInput();
-	void printInputBack(const char*);
-};
+
+int main() {
+	return 0;
+}

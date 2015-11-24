@@ -1,15 +1,11 @@
 /*------------------------------------------------------------------------------
-| NuCTE		| output.hpp
+| NuCTE		| command.h
 | Author	| Benjamin E Allen
-| Date		| 22 November, 2015
+| Date		| 23 November, 2015
 |-------------------------------------------------------------------------------
-| Overview	| Define output class, used to relay information from the game to
-|			| the player
+| Overview	| Define command base class and all command subclasses.
 \-----------------------------------------------------------------------------*/
 
-class Output {
-public:
-	const char* message;
+void callCommand(const char*);
 
-	void printMessage(const char* message);
-};
+void quit();
