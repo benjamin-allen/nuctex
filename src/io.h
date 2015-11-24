@@ -8,8 +8,8 @@
 
 
 // Input Functions
-const char* getInput();
-void debugInput(const char*);
+char* getInput();
+void debugInput(char*);
 
 // Output Functions
-void printMessage(const char*);
+void printMessage(char*);

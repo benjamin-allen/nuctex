@@ -3,25 +3,42 @@
 | Author	| Benjamin E Allen
 | Date		| 22 November, 2015
 |-------------------------------------------------------------------------------
-| Overview	| Implement member functions of input.h
+| Overview	| Implement member functions of io.h
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
 #include <stdio.h>
+#include <string.h>
 
-void printMessage(const char* message) {
+char g_command[64];
+
+void printMessage(char* message) {
 	printf("%s\n", message);
 }
 
-const char* getInput() {
-	char* line;
-	int lineLimit = 64;
+char* removeNewline(char* line) {
+	char* pos;
+	if((pos=strchr(line, '\n')) != NULL) {
+		*pos = '\0';
+	}
+}
 
-	fgets(line, lineLimit, stdin);
+char* getInput() {
+	char* pLine = g_command;
 
-	return line;
+	fgets(pLine, 64, stdin);
+	removeNewline(pLine);
+
+	return pLine;
 };
 
-void debugInput(const char* line) {
-	printMessage(line);
+void debugInput(char* line) {
+	printMessage("BEGINNING DEBUG OF CSTRING");
+	int i = 0;
+	while (line[i] != 0) {
+		printf("%c", line[i]);
+		i++;
+	}
+	printf("\n");
+	printMessage("ENDING DEBUG OF CSTRING");
 }

@@ -8,8 +8,10 @@
 
 #include "io.h"
 #include "command.h"
-
+#include "gamef.h"
 
 int main() {
+	gameLoop();
+
 	return 0;
 }

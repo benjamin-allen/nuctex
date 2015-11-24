@@ -1,9 +1,10 @@
 /*------------------------------------------------------------------------------
-| NuCTE		| command.h
+| NuCTE		| gamef.h
 | Author	| Benjamin E Allen
-| Date		| 23 November, 2015
+| Date		| 24 November, 2015
 |-------------------------------------------------------------------------------
-| Overview	| Prototype declarations for functions used in command handling.
+| Overview	| Prototype declarations for functions used in the game
 \-----------------------------------------------------------------------------*/
 
-void callCommand(char*);
+int gameLoop();
+void quit();

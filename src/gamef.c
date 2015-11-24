@@ -1,23 +1,23 @@
 /*------------------------------------------------------------------------------
-| NuCTE		| command.c
+| NuCTE		| gamef.c
 | Author	| Benjamin E Allen
-| Date		| 23 November, 2015
+| Date		| 24 November, 2015
 |-------------------------------------------------------------------------------
-| Overview	| Implement command functions.
+| Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
 
-#include <string.h>
-#include "command.h"
 #include "io.h"
-#include "gamef.h"
 
-extern int g_isQuit;
+int game_isQuit = 0;
 
-void callCommand(char* input) {
-	if(strcmp(input, "quit") == 0) {
-		quit();
+void quit() {
+	game_isQuit = 1;
+	printMessage("Quitting NuCTE");
+}
+
+int gameLoop() {
+	while(game_isQuit != 1) {
+		printMessage(getInput());
 	}
-	else {
-		printMessage("Invalid Command!");
-	}
+	return 0;
 }
