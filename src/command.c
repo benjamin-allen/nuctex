@@ -11,12 +11,17 @@
 #include "io.h"
 #include "gamef.h"
 
-extern int g_isQuit;
-
+// callCommand() ---
+// Main game command parser. Basically a giant if-elseif-else statement. This
+// thing will grow.
 void callCommand(char* input) {
-	if(strcmp(input, "quit") == 0) {
-		quit();
+
+	// quit command
+	if(strcmp(input, "quit") == 0) {	// strcmp returns 0 on truth. I hate it
+		quit();							// but that's how it is.
 	}
+
+	// default "no-match" response
 	else {
 		printMessage("Invalid Command!");
 	}

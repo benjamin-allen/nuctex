@@ -6,5 +6,8 @@
 | Overview	| Prototype declarations for functions used in the game
 \-----------------------------------------------------------------------------*/
 
+// Game control
 int gameLoop();
-void quit();
+
+// Game Commands
+void quit();	// 'quit'

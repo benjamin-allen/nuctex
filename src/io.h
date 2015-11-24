@@ -9,7 +9,7 @@
 
 // Input Functions
 char* getInput();
-void debugInput(char*);
+char* removeNewline(char*);
 
 // Output Functions
 void printMessage(char*);
