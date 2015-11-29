@@ -7,8 +7,16 @@
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
-#include "command.h"
 #include "location.h"
+
+int gameLoop();
+void quit();
+void look(struct location);
+void go(struct location);
+void north(int*, struct location*);
+void south(int*, struct location*);
+void callCommand(char* input);
+
 
 int game_isQuit = 0;	// file-wide game-quitting variable. This will not go
 						// out of scope for the main game loop
@@ -46,19 +54,21 @@ void go(struct location location) {
 	look(locs[playerPos]);
 }
 
-void north(int pos,struct location locs[]) {
-	pos = pos + 1;
-	go(locs[pos]);
+void north(int* pos,struct location locs[]) {
+	(*pos)++;
+	go(locs[*pos]);
 }
 
-void south(int pos,struct location locs[]) {
-	pos = pos - 1;
-	go(locs[pos]);
+void south(int* pos,struct location locs[]) {
+	(*pos)--;
+	go(locs[*pos]);
 }
 
 
 
 void callCommand(char* input) {
+	int* pPlayerPos;
+	pPlayerPos = &playerPos;
 
 	// quit command
 	if(strcmp(input, "quit") == 0) {	// strcmp returns 0 on truth. I hate it
@@ -67,6 +77,14 @@ void callCommand(char* input) {
 
 	else if(strcmp(input, "look") == 0) {
 		look(locs[playerPos]);
+	}
+
+	else if(strcmp(input, "north") == 0) {
+		north(pPlayerPos, locs);
+	}
+
+	else if(strcmp(input, "south") == 0) {
+		south(pPlayerPos, locs);
 	}
 
 	// default "no-match" response
