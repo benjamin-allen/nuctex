@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-| NuCTE		| command.c
+| NuCTex		| command.c
 | Author	| Benjamin E Allen
 | Date		| 23 November, 2015
 |-------------------------------------------------------------------------------
@@ -14,15 +14,19 @@
 // callCommand() ---
 // Main game command parser. Basically a giant if-elseif-else statement. This
 // thing will grow.
-void callCommand(char* input) {
+/*void callCommand(char* input) {
 
 	// quit command
 	if(strcmp(input, "quit") == 0) {	// strcmp returns 0 on truth. I hate it
 		quit();							// but that's how it is.
 	}
 
+	else if(strcmp(input, "look") == 0) {
+		look(locs);
+	}
+
 	// default "no-match" response
 	else {
 		printMessage("Invalid Command!");
 	}
-}
+} */

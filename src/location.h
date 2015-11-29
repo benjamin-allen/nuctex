@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-| NuCTE		| location.h
+| NuCTex		| location.h
 | Author	| Benjamin E Allen
 | Date		| 25 November, 2015
 |-------------------------------------------------------------------------------
@@ -8,6 +8,5 @@
 
 struct location {
 	char* description;
+	char* tag;
 };
-
-void describeLocation(struct location);
