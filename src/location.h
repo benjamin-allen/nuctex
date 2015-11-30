@@ -8,5 +8,4 @@
 
 struct location {
 	char* description;
-	char* tag;
 };

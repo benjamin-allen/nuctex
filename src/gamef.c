@@ -13,20 +13,20 @@ int gameLoop();
 void quit();
 void look(struct location);
 void go(struct location);
-void north(int*, struct location*);
-void south(int*, struct location*);
+void north();
+void south();
 void callCommand(char* input);
+
+struct location locs[2][2] = {
+	{"The northwest room", "The northeast room"},
+	{"The southwest room", "The southeast room"}
+};
+
 
 
 int game_isQuit = 0;	// file-wide game-quitting variable. This will not go
 						// out of scope for the main game loop
-
-int playerPos = 0;
-
-struct location locs[2] = {
-	{"Metal walls enclose the armature and casing of a giant generator.", "start"},
-	{"To the south lies a door to a room, from which a faint hum can be heard.", "hall"}
-};
+int playerx = 0, playery = 0;
 
 // gameLoop() ---
 // main game loop. Add things as needed
@@ -51,40 +51,37 @@ void look(struct location locs) {
 }
 
 void go(struct location location) {
-	look(locs[playerPos]);
+	look(locs[playery][playerx]);
 }
 
-void north(int* pos,struct location locs[]) {
-	(*pos)++;
-	go(locs[*pos]);
+void north() {
+	playery --;
+	go(locs[playery][playerx]);
 }
 
-void south(int* pos,struct location locs[]) {
-	(*pos)--;
-	go(locs[*pos]);
+void south() {
+	playery ++;
+	go(locs[playery][playerx]);
 }
 
 
 
 void callCommand(char* input) {
-	int* pPlayerPos;
-	pPlayerPos = &playerPos;
-
 	// quit command
 	if(strcmp(input, "quit") == 0) {	// strcmp returns 0 on truth. I hate it
 		quit();							// but that's how it is.
 	}
 
 	else if(strcmp(input, "look") == 0) {
-		look(locs[playerPos]);
+		look(locs[playery][playerx]);
 	}
 
 	else if(strcmp(input, "north") == 0) {
-		north(pPlayerPos, locs);
+		north();
 	}
 
 	else if(strcmp(input, "south") == 0) {
-		south(pPlayerPos, locs);
+		south();
 	}
 
 	// default "no-match" response
