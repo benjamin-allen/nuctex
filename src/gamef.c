@@ -8,13 +8,6 @@
 
 #include "io.h"
 #include "location.h"
-
-int gameLoop();
-void quit();
-void look(struct location);
-void go(struct location);
-void north();
-void south();
 void callCommand(char* input);
 
 struct location locs[2][2] = {
@@ -51,20 +44,28 @@ void look(struct location locs) {
 }
 
 void go(struct location location) {
-	look(locs[playery][playerx]);
+	look(locs[playerx][playery]);
 }
 
 void north() {
-	playery --;
-	go(locs[playery][playerx]);
+	playerx --;
+	go(locs[playerx][playery]);
 }
 
 void south() {
-	playery ++;
-	go(locs[playery][playerx]);
+	playerx ++;
+	go(locs[playerx][playery]);
 }
 
+void east() {
+	playery ++;
+	go(locs[playerx][playery]);
+}
 
+void west() {
+	playery --;
+	go(locs[playerx][playery]);
+}
 
 void callCommand(char* input) {
 	// quit command
@@ -84,8 +85,17 @@ void callCommand(char* input) {
 		south();
 	}
 
+	else if(strcmp(input, "east") == 0) {
+		east();
+	}
+
+	else if(strcmp(input, "west") == 0) {
+		west();
+	}
 	// default "no-match" response
 	else {
 		printMessage("Invalid Command!");
 	}
 }
+
+

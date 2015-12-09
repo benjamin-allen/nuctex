@@ -11,9 +11,12 @@
 // Game control
 int gameLoop();
 void go(struct location *);
+void callComand(char*);
 
 // Game Commands
 void quit();	// 'quit'
 void look();	// 'look'
 void north();	// 'north'
 void south();	// 'south'
+void east();
+void west();
