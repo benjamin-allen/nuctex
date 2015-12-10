@@ -10,7 +10,7 @@
 
 // Game control
 int gameLoop();
-void go(struct location *);
+void go(Location *);
 void callComand(char*);
 
 // Game Commands

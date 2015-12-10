@@ -6,6 +6,8 @@
 | Overview	| Define structs and functions used in the location code
 \-----------------------------------------------------------------------------*/
 
-struct location {
+typedef struct Location {
 	char* description;
-};
+
+	
+} Location;

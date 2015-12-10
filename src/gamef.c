@@ -10,7 +10,7 @@
 #include "location.h"
 void callCommand(char* input);
 
-struct location locs[2][2] = {
+Location locs[2][2] = {
 	{"The northwest room", "The northeast room"},
 	{"The southwest room", "The southeast room"}
 };
@@ -39,11 +39,11 @@ void quit() {
 	printMessage("Quitting NuCTex");
 }
 
-void look(struct location locs) {
+void look(Location locs) {
 	printMessage(locs.description);
 }
 
-void go(struct location location) {
+void go(Location location) {
 	look(locs[playerx][playery]);
 }
 
