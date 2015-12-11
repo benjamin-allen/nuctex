@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
 | NuCTex	| io.c
-| Author	| Benjamin E Allen
+| Author	| Benjamin A - Nullsrc
 | Date		| 22 November, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Implement member functions of io.h

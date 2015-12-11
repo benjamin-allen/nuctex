@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
 | NuCTex	| gamef.c
-| Author	| Benjamin E Allen
+| Author	| Benjamin A - Nullsrc
 | Date		| 24 November, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.

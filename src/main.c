@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
 | NuCTex	| main.c
-| Author	| Benjamin E Allen
+| Author	| Benjamin A - Nullsrc
 | Date		| 22 November, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Initialize main game loop. Doesn't do much yet.

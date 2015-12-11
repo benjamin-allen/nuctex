@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------
 | NuCTex	| gamef.h
-| Author	| Benjamin E Allen
+| Author	| Benjamin A - Nullsrc
 | Date		| 24 November, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Prototype declarations for functions used in the game
