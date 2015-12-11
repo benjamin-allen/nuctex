@@ -9,17 +9,18 @@
 #include "io.h"
 #include "location.h"
 void callCommand(char* input);
-
-Location locs[2][2] = {
-	{"The northwest room", "The northeast room"},
-	{"The southwest room", "The southeast room"}
-};
-
-
+Location southRoom;
+Location northRoom;
+Location northmostRoom;
+Location southmostRoom;
+Location southRoom = { .description="The South Room", .north=&northRoom, .south=&southmostRoom};
+Location northRoom = { .description="The North Room", .north=&northmostRoom, .south=&southRoom};
+Location northmostRoom = { .description="The Northmost Room", .north=0, .south=&northRoom};
+Location southmostRoom = { .description="The Southmost Room", .north=&southRoom, .south=0};
 
 int game_isQuit = 0;	// file-wide game-quitting variable. This will not go
 						// out of scope for the main game loop
-int playerx = 0, playery = 0;
+struct Location *pos = &northRoom;
 
 // gameLoop() ---
 // main game loop. Add things as needed
@@ -39,33 +40,22 @@ void quit() {
 	printMessage("Quitting NuCTex");
 }
 
-void look(Location locs) {
-	printMessage(locs.description);
+void look(Location* room) {
+	printMessage(room->description);
 }
 
-void go(Location location) {
-	look(locs[playerx][playery]);
+void go(Location* room) {
+	look(room);
 }
 
 void north() {
-	playerx --;
-	go(locs[playerx][playery]);
+	pos = pos->north;
 }
 
 void south() {
-	playerx ++;
-	go(locs[playerx][playery]);
+	pos = pos->south;
 }
 
-void east() {
-	playery ++;
-	go(locs[playerx][playery]);
-}
-
-void west() {
-	playery --;
-	go(locs[playerx][playery]);
-}
 
 void callCommand(char* input) {
 	// quit command
@@ -74,7 +64,7 @@ void callCommand(char* input) {
 	}
 
 	else if(strcmp(input, "look") == 0) {
-		look(locs[playery][playerx]);
+		look(pos);
 	}
 
 	else if(strcmp(input, "north") == 0) {
@@ -85,13 +75,6 @@ void callCommand(char* input) {
 		south();
 	}
 
-	else if(strcmp(input, "east") == 0) {
-		east();
-	}
-
-	else if(strcmp(input, "west") == 0) {
-		west();
-	}
 	// default "no-match" response
 	else {
 		printMessage("Invalid Command!");

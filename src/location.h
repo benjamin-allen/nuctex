@@ -9,5 +9,8 @@
 typedef struct Location {
 	char* description;
 
-	
+	struct Location* north;
+	struct Location* south;
+	struct Location* east;
+	struct Location* west;
 } Location;
