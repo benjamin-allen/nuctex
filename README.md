@@ -7,7 +7,9 @@ future.
 ##Development Status
 NuCTex is currently in pre-alpha development, meaning that it is in no way a
 game that can be played and enjoyed for entertainment. Current focus is in
-creating a proof of concept and then expanding on it to create a game.
+creating a proof of concept and then expanding on it to create a game. There
+is a list of features that must be implemented in NuCTex before it goes into
+Alpha. See the milestones page for more details.
 
 ###Current features
 * Walk around in an exciting 4-tile world!
