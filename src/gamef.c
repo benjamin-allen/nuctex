@@ -34,7 +34,38 @@ void quit() {
 print the description of a given location. Usually used in conjuction with
 the move functions. */
 void look(Location* room) {
+	int exits = 0;
 	printMessage(room->description);
+	if(room->n != 0) {
+		exits = exits + 1;
+	}
+	if(room->s !=0) {
+		exits = exits + 2;
+	}
+	if(room->e != 0) {
+		exits = exits + 4;
+	}
+	if(room->w != 0) {
+		exits = exits + 8;
+	}
+	switch(exits) {
+		case 1   : printMessage("Exits: North");break;
+		case 2   : printMessage("Exits: South");break;
+		case 3   : printMessage("Exits: North, South");break;
+		case 4   : printMessage("Exits: East");break;
+		case 5   : printMessage("Exits: North, East");break;
+		case 6   : printMessage("Exits: South, East");break;
+		case 7   : printMessage("Exits: North, South, East");break;
+		case 8   : printMessage("Exits: West");break;
+		case 9   : printMessage("Exits: North, West");break;
+		case 10  :printMessage("Exits: South, West");break;
+		case 11  :printMessage("Exits: North, South, West");break;
+		case 12  :printMessage("Exits: East, West");break;
+		case 13  :printMessage("Exits: North, East, West");break;
+		case 14  :printMessage("Exits: South, East, West");break;
+		case 15  :printMessage("Exits: North, South, East, West");break;
+		default  :printMessage("This place has no exits.");break;
+	}
 }
 
 void north() {

@@ -12,7 +12,7 @@
 Location nw = { .description="The Northwest Room", .n=0, .s=&sw, .e=&ne, .w=0};
 Location ne = { .description="The Northeast Room", .n=0, .s=&se, .e=0, .w=&nw};
 Location sw = { .description="The Southwest Room", .n=&nw, .s=0, .e=&se, .w=0};
-Location se = { .description="The Southeast Room", .n=&ne, .s=0, .e=0, .w=&se};
+Location se = { .description="The Southeast Room", .n=&ne, .s=0, .e=0, .w=&sw};
 
 // the player will start at the location specified here
 Location *pos = &ne;
