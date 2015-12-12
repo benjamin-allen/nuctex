@@ -36,6 +36,6 @@ any recent version of GCC.
 These steps have been tested with a computer running Debian 7 ARM and a computer
 running 64-bit Arch Linux.
 
-##Others(Windows, Mac, etc.)
+##Others (Windows, Mac, etc.)
 There is currently no knowledge on compilation on other systems. Any help is
 appreciated.

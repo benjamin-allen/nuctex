@@ -12,7 +12,7 @@ typedef struct Location {
 	char* description;		// A string description of the location
 
 	/* these are the location pointers. These will point to other locations that
-	this location connects to. Set to a location that has been delclared, and
+	this location connects to. Set to a location that has been declared, and
 	make sure that it makes sense. To create a "wall," set the pointer to 0
 	in the initialization (location.c) */
 	struct Location* n;
