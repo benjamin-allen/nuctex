@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-| NuCTex		| gamef.h
+| NuCTex	| gamef.h
 | Author	| Benjamin E Allen
 | Date		| 24 November, 2015
 |-------------------------------------------------------------------------------
@@ -10,7 +10,6 @@
 
 // Game control
 int gameLoop();
-void go(Location*);
 void callComand(char*);
 
 // Game Commands
@@ -18,3 +17,5 @@ void quit();	// 'quit'
 void look(Location*);	// 'look'
 void north();	// 'north'
 void south();	// 'south'
+void east();	// 'east
+void west();	// 'west
