@@ -15,7 +15,7 @@ void callComand(char*);
 // Game Commands
 void quit();	// 'quit'
 void look(Location*);	// 'look'
-void north();	// 'north'
-void south();	// 'south'
-void east();	// 'east
-void west();	// 'west
+void north(Location*);	// 'north'
+void south(Location*);	// 'south'
+void east(Location*);	// 'east
+void west(Location*);	// 'west

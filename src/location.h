@@ -26,9 +26,3 @@ Location nw;
 Location ne;
 Location sw;
 Location se;
-
-
-/* this pointer handles the player's current position. It changes often by a
-number of different commands. This is first initialized in the location.c
-file. Where you initialize it is where the player will start. */
-Location *pos;

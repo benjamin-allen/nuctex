@@ -7,7 +7,7 @@
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
-#include "location.h"
+#include "actor.h"
 void callCommand(char* input);
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
@@ -77,7 +77,7 @@ void look(Location* room) {
 	}
 }
 
-void north() {
+void north(Location* pos) {
 	// check if the room has nothing north of it
 	if(pos->n == 0) {
 		printMessage("You cannot go that way.");
@@ -90,7 +90,7 @@ void north() {
 	}
 }
 
-void south() {
+void south(Location* pos) {
 	// check if the room has nothing south of it
 	if(pos->s == 0) {
 		printMessage("You cannot go that way.");
@@ -103,7 +103,7 @@ void south() {
 	}
 }
 
-void east() {
+void east(Location* pos) {
 	// check if the room has nothing east of it
 	if(pos->e == 0) {
 		printMessage("You cannot go that way.");
@@ -116,7 +116,7 @@ void east() {
 	}
 }
 
-void west() {
+void west(Location* pos) {
 	// check if the room has nothing west of it
 	if(pos->w == 0) {
 		printMessage("You cannot go that way.");
@@ -137,23 +137,23 @@ void callCommand(char* input) {
 	}
 
 	else if(strcmp(input, "look") == 0) {
-		look(pos);
+		look(player.actorPos);
 	}
 
 	else if(strcmp(input, "north") == 0) {
-		north();
+		north(player.actorPos);
 	}
 
 	else if(strcmp(input, "south") == 0) {
-		south();
+		south(player.actorPos);
 	}
 	
 	else if(strcmp(input, "east") == 0) {
-		east();
+		east(player.actorPos);
 	}
 	
 	else if(strcmp(input, "west") == 0) {
-		west();
+		west(player.actorPos);
 	}
 
 	// default "no-match" response
