@@ -15,5 +15,5 @@ Actor player = {
 	.intelligence=10,
 	.charisma=10,
 
-	.actorPos=&ne
+	.actorPos=&nw
 };

@@ -8,6 +8,7 @@
 
 #include "io.h"
 #include "actor.h"
+#include <string.h>
 void callCommand(char* input);
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
@@ -77,55 +78,26 @@ void look(Location* room) {
 	}
 }
 
-void north(Location* pos) {
-	// check if the room has nothing north of it
-	if(pos->n == 0) {
-		printMessage("You cannot go that way.");
-	}
-	
-	// if that check passes, move north
-	else {
-		pos = pos->n;
-		look(pos);
-	}
-}
-
-void south(Location* pos) {
-	// check if the room has nothing south of it
-	if(pos->s == 0) {
-		printMessage("You cannot go that way.");
-	}
-
-	// if that check passes, move south
-	else {
-		pos = pos->s;
-		look(pos);
-	}
-}
-
-void east(Location* pos) {
-	// check if the room has nothing east of it
-	if(pos->e == 0) {
-		printMessage("You cannot go that way.");
-	}
-
-	// if that check passes, move east
-	else {
-		pos = pos->e;
-		look(pos);
-	}
-}
-
-void west(Location* pos) {
-	// check if the room has nothing west of it
-	if(pos->w == 0) {
-		printMessage("You cannot go that way.");
-	}
-
-	// if that check passes, move west
-	else {
-		pos = pos->w;
-		look(pos);
+Location* move(Location* pos, char nsew) {
+	switch(nsew) {
+		case 'n': pos = pos->n; 
+			look(pos);
+			return pos;
+			break;
+		case 's': pos = pos->s; 
+			look(pos);
+			return pos;
+			break;
+		case 'e': pos = pos->e;
+			look(pos);
+			return pos;
+			break;
+		case 'w': pos = pos->w;
+			look(pos);
+			return pos;
+			break;
+		default : printMessage("There's nowhere to go");
+			break;
 	}
 }
 
@@ -141,19 +113,19 @@ void callCommand(char* input) {
 	}
 
 	else if(strcmp(input, "north") == 0) {
-		north(player.actorPos);
+		player.actorPos = move(player.actorPos, 'n');
 	}
 
 	else if(strcmp(input, "south") == 0) {
-		south(player.actorPos);
+		player.actorPos = move(player.actorPos, 's');
 	}
 	
 	else if(strcmp(input, "east") == 0) {
-		east(player.actorPos);
+		player.actorPos = move(player.actorPos, 'e');
 	}
 	
 	else if(strcmp(input, "west") == 0) {
-		west(player.actorPos);
+		player.actorPos = move(player.actorPos, 'w');
 	}
 
 	// default "no-match" response
