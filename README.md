@@ -39,5 +39,5 @@ These steps have been tested with a computer running Debian 7 ARM and a computer
 running 64-bit Arch Linux.
 
 ##Others (Windows, Mac, etc.)
-There is currently no knowledge on compilation on other systems. Any help is
-appreciated.
+For Windows, the most likely workable option is to use MinGW. Mac users should
+hace access to an implementation of GCC.
