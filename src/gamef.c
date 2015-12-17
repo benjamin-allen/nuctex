@@ -97,6 +97,7 @@ Location* move(Location* pos, char nsew) {
 			return pos;
 			break;
 		default : printMessage("There's nowhere to go");
+			return pos;
 			break;
 	}
 }
