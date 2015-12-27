@@ -19,3 +19,4 @@ typedef struct Actor {
 }Actor;
 
 Actor player;
+Actor monster[2];

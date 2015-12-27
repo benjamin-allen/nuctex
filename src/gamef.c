@@ -76,32 +76,35 @@ void look(Location* room) {
 		default  : printMessage("Invalid number of exits. Debugging required.");
 			break;
 	}
-}
-
-Location* move(Location* pos, char nsew) {
-	switch(nsew) {
-		case 'n': pos = pos->n; 
-			look(pos);
-			return pos;
-			break;
-		case 's': pos = pos->s; 
-			look(pos);
-			return pos;
-			break;
-		case 'e': pos = pos->e;
-			look(pos);
-			return pos;
-			break;
-		case 'w': pos = pos->w;
-			look(pos);
-			return pos;
-			break;
-		default : printMessage("There's nowhere to go");
-			return pos;
-			break;
+	int i = 0;
+	int isMonsterHere = 0;
+	while(i < 2) {
+		if(monster[i].actorPos == player.actorPos &&
+			monster[i].actorPos == room) {
+			printMonster(monster[i].name);
+			isMonsterHere=1;
+		}
+		i++;
+	}
+	if(isMonsterHere == 1) {
+		printMessage("");
 	}
 }
 
+void move(Actor* creature, char nsew) {
+	switch(nsew) {
+		case 'n': creature->actorPos = creature->actorPos->n; 
+			break;
+		case 's': creature->actorPos = creature->actorPos->s; 
+			break;
+		case 'e': creature->actorPos = creature->actorPos->e;
+			break;
+		case 'w': creature->actorPos = creature->actorPos->w;
+			break;
+		default : printMessage("There's nowhere to go");
+			break;
+	}
+}
 
 void callCommand(char* input) {
 	// quit command
@@ -114,19 +117,23 @@ void callCommand(char* input) {
 	}
 
 	else if(strcmp(input, "north") == 0) {
-		player.actorPos = move(player.actorPos, 'n');
+		move(&player, 'n');
+		look(player.actorPos);
 	}
 
 	else if(strcmp(input, "south") == 0) {
-		player.actorPos = move(player.actorPos, 's');
+		move(&player, 's');
+		look(player.actorPos);
 	}
 	
 	else if(strcmp(input, "east") == 0) {
-		player.actorPos = move(player.actorPos, 'e');
+		move(&player, 'e');
+		look(player.actorPos);
 	}
 	
 	else if(strcmp(input, "west") == 0) {
-		player.actorPos = move(player.actorPos, 'w');
+		move(&player, 'w');
+		look(player.actorPos);
 	}
 
 	// default "no-match" response

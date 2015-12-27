@@ -6,8 +6,7 @@
 | Overview	| Prototype declarations for functions used in the game
 \-----------------------------------------------------------------------------*/
 
-#include "location.h"
-
+#include "actor.h"
 // Game control
 int gameLoop();
 void callComand(char*);
@@ -15,4 +14,4 @@ void callComand(char*);
 // Game Commands
 void quit();	// 'quit'
 void look(Location*);	// 'look'
-Location* move(Location*, char);
+void move(Actor*, char);

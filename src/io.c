@@ -19,6 +19,10 @@ void printMessage(char* message) {
 	printf("%s\n", message);	// append a newline char before printing
 }
 
+void printMonster(char* name) {
+	printf("There is a %s here. ", name);
+}
+
 /* removeNewline() ---
 remove the extraneous newline char from the fgets output. */
 char* removeNewline(char* line) {

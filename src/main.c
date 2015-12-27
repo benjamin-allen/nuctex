@@ -10,6 +10,7 @@
 #include "gamef.h"
 
 int main() {
+	printMessage("Welcome to NuCTex pre-alpha!");
 	gameLoop();
 
 	return 0;
