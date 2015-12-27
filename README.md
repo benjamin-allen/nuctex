@@ -13,7 +13,7 @@ Alpha. See the milestones page for more details.
 
 ###Current features
 * Walk around in an exciting 4-tile world!
-* Experience the ability to look at your surroundings!
+* Experience the ability to look at your surroundings (and other monsters!)
 * Enjoy great power in avoiding the dreaded segfaults!
 * Properly quit the program!
 
@@ -31,9 +31,9 @@ any recent version of GCC.
 ##Linux
 1. Download the repo with `git clone https://github.com/Nullsrc/nuctex`
 2. Move into the repo with `cd nuctex`
-3. Compile NuCTex with `gcc -o nuctex src/*.c`, replacing
-<executableName> with whatever you wish the executable to be called.
-4. Run the executable with `./nuctex`
+3. Compile NuCTex with `gcc -o nuctex src/*.c`, replacing nuctex with whatever 
+you wish the executable to be called.
+4. Run the executable with `./nuctex` (or whatever you called it)
 
 These steps have been tested with a computer running Debian 7 ARM and a computer
 running 64-bit Arch Linux.
