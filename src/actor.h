@@ -11,8 +11,9 @@
 
 typedef struct Actor {
 	char* name;
+	int health;
 	int strength;
-	int dexterity;
+	int agility;
 	int intelligence;
 	int charisma;
 

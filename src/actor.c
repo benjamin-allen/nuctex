@@ -11,8 +11,9 @@
 
 Actor player = {
 	.name="Nullsrc",
+	.health=100,
 	.strength=10,
-	.dexterity=10,
+	.agility=10,
 	.intelligence=10,
 	.charisma=10,
 
@@ -22,8 +23,9 @@ Actor player = {
 Actor monster[2] = {
 	{
 		.name="Grue",
+		.health=250,
 		.strength=20,
-		.dexterity=5,
+		.agility=5,
 		.intelligence=3,
 		.charisma=2,
 
@@ -31,8 +33,9 @@ Actor monster[2] = {
 	},
 	{
 		.name="Slime",
+		.health=25,
 		.strength=5,
-		.dexterity=10,
+		.agility=10,
 		.intelligence=5,
 		.charisma=5,
 
