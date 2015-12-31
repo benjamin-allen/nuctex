@@ -11,6 +11,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void initRand() {
+	srand(time(NULL));
+}
+
 int rng(int low, int high) {
 	high += 1;
 	int temp = low;
@@ -31,7 +35,7 @@ int brng() {
 
 int calcDamage(int strength) {
 	int damageTotal = 0;
-	damageTotal = strength;
+	damageTotal = rng(strength - (strength/4), strength + (strength/5));
 	return damageTotal;
 }
 

@@ -11,6 +11,7 @@
 #include "combat.h"
 
 int main() {
+	initRand();
 	printMessage("Welcome to NuCTex pre-alpha!");
 	combat(&player, &monster[1]);
 

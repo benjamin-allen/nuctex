@@ -8,6 +8,7 @@
 \-----------------------------------------------------------------------------*/
 
 // RNG functions
+void randInit();
 int rng(int, int);
 int zrng(int);
 int brng();
