@@ -23,7 +23,7 @@ Actor player = {
 Actor monster[2] = {
 	{
 		.name="Grue",
-		.health=250,
+		.health=25,
 		.strength=20,
 		.agility=5,
 		.intelligence=3,

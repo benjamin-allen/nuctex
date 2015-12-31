@@ -12,7 +12,7 @@
 
 int main() {
 	printMessage("Welcome to NuCTex pre-alpha!");
-	gameLoop();
+	combat(&player, &monster[1]);
 
 	return 0;
 }

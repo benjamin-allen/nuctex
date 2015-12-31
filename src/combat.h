@@ -17,7 +17,3 @@ int hasRun = 0;
 // Combat actions
 void attack(Actor*, Actor*);
 void run(Actor*, Actor*);
-
-// Math functions
-int calcDamage(int);
-int runAway(int, int);

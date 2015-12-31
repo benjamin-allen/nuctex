@@ -24,6 +24,10 @@ void printMonster(char* name) {
 	printf("There is a %s here. ", name);
 }
 
+void printDamage(int damage, char* creatureName) {
+	printf("You did %i damage to the %s!\n", damage, creatureName);
+}
+
 /* removeNewline() ---
 remove the extraneous newline char from the fgets output. */
 char* removeNewline(char* line) {

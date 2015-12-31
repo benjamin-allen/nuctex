@@ -11,14 +11,18 @@
 #include <stdio.h>
 #include "combat.h"
 #include "io.h"
+#include "math.h"
 
 void combat(Actor* player, Actor* creature) {
-	while(player->health > 0 && hasRun == 0) {
+	while(player->health > 0 && hasRun == 0 && creature->health > 0) {
 		int action = inputAction();
 		switch(action) {
 			case 1: attack(player, creature);
 				break;
 			case 2: run(player, creature);
+				if(hasRun == 0) {
+					printMessage("You try to flee, but can't...");
+				}
 				break;
 			default: break;
 		}
@@ -29,42 +33,31 @@ void combat(Actor* player, Actor* creature) {
 	else if(hasRun != 0) {
 		printMessage("You manage to flee the fight.");
 	}
+	else if(creature->health <=0) {
+		printMessage("You slay the monster");
+	}
 }
 
 int inputAction() {
-	while(1) {
-		printMessage("What would you like to do?");
-		printMessage("1: Attack");
-		printMessage("2: Run");
-		char input;
-		scanf(" %c", &input);
-		switch(input) {
-			case '1': return 1;
-			case '2': return 2;
-			default : printMessage("Invalid input!");
-		}
+	printMessage("What would you like to do?");
+	printMessage("1: Attack");
+	printMessage("2: Run");
+	char input;
+	scanf(" %c", &input);
+	switch(input) {
+		case '1': return 1;
+		case '2': return 2;
+		default : printMessage("Invalid input!");
 	}
 }
 
 void attack(Actor* attacker, Actor* defender) {
-	defender->health -= calcDamage(attacker->strength);
+	printMessage("You attempt to attack the monster!");
+	int damage = calcDamage(attacker->strength);
+	defender->health -= damage;
+	printDamage(damage, defender->name);
 }
 
 void run(Actor* escaping, Actor* chasing) {
 	hasRun = runAway(escaping->agility, chasing->agility);
-}
-
-int calcDamage(int strength) {
-	int damageTotal = 0;
-	damageTotal = strength;
-	return damageTotal;
-}
-
-int runAway(int escapingAgility, int chasingAgility) {
-	if(escapingAgility > chasingAgility) {
-		return 1;
-	}
-	else {
-		return 0;
-	}
 }

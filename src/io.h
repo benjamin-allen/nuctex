@@ -15,3 +15,4 @@ char* removeNewline(char*);
 // Output Functions
 void printMessage(char*);
 void printMonster(char*);
+void printDamage(int, char*);
