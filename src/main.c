@@ -2,13 +2,12 @@
 | NuCTex	| main.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 27 December, 2015
+| Changed	| 31 December, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Initialize main game loop. Doesn't do much yet.
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
-#include "gamef.h"
 #include "combat.h"
 
 int main() {

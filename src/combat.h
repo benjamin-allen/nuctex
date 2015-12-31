@@ -2,7 +2,7 @@
 | NuCTex	| combat.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 29 December, 2015
-| Changed	| 29 December, 2015
+| Changed	| 31 December, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Declaration of combat systems
 \-----------------------------------------------------------------------------*/
@@ -12,7 +12,7 @@
 // Main combat functions
 void combat(Actor*, Actor*);
 int inputAction();
-int hasRun = 0;
+int hasRun;
 
 // Combat actions
 void attack(Actor*, Actor*);
