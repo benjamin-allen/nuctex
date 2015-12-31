@@ -31,9 +31,9 @@ any recent version of GCC.
 ##Linux
 1. Download the repo with `git clone https://github.com/Nullsrc/nuctex`
 2. Move into the repo with `cd nuctex`
-3. Compile NuCTex with `gcc -o nuctex src/*.c`, replacing nuctex with whatever 
-you wish the executable to be called.
-4. Run the executable with `./nuctex` (or whatever you called it)
+3. Initialize the CMake project with `cmake .`
+4. Compile with `make`
+5. Run `./nuctex`
 
 These steps have been tested with a computer running Debian 7 ARM and a computer
 running 64-bit Arch Linux.
