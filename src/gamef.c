@@ -2,7 +2,7 @@
 | NuCTex	| gamef.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 27 December, 2015
+| Changed	| 31 December, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
@@ -10,6 +10,7 @@
 #include "io.h"
 #include "actor.h"
 #include <string.h>
+
 void callCommand(char* input);
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
