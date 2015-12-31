@@ -40,7 +40,7 @@ int calcDamage(int strength) {
 }
 
 int runAway(int escapingAgility, int chasingAgility) {
-	if(escapingAgility > chasingAgility) {
+	if((escapingAgility + zrng(escapingAgility/3)) > chasingAgility) {
 		return 1;
 	}
 	else {
