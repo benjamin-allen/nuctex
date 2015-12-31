@@ -1,8 +1,15 @@
 #NuCTex
 The Null C Text Engine is an attempt to create a singleplayer game engine in the
-style of the Multi User Dungeons of the '80s and '90s. The goal is to create a
-functional game as practice for an implementation of an actual MUD engine in the
-future.
+style of the Multi User Dungeons and text adventure games of the '80s and '90s.
+The goal is to create a functional game as practice for an implementation of an
+actual MUD engine in the future.
+
+#Goals
+The short-term goal is to create a game that is text-based in style and
+execution but MUD-like in size and story detail.
+
+The long-term goal is to create a fully functional engine from which any user
+can create a game with locations, monsters, and puzzles to solve.
 
 ##Development Status
 NuCTex is currently in pre-alpha development, meaning that it is in no way a
