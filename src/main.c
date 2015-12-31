@@ -9,6 +9,7 @@
 
 #include "io.h"
 #include "gamef.h"
+#include "combat.h"
 
 int main() {
 	printMessage("Welcome to NuCTex pre-alpha!");
