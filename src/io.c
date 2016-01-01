@@ -2,12 +2,13 @@
 | NuCTex	| io.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 27 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement member functions of io.h
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
+#include "gamef.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -55,3 +56,61 @@ char* getInput() {
 
 	return pLine;
 };
+
+
+void parseInput(char* input) {
+	char* v = strtok(input, " \n");
+	char* n = strtok(NULL, " \n");
+	char* overflow = strtok(NULL, " \n");
+
+	if(overflow != NULL) {
+		printf("Invalid command!");
+		return;
+	}
+
+	if(n == NULL) {
+		n = "!n";
+	}
+
+	callCommand(v, n);
+}
+
+void callCommand(char* verb, char* noun) {
+	// quit command
+	if(strcmp(verb, "quit") == 0) {	// strcmp returns 0 on truth
+		quit();
+	}
+
+	else if(strcmp(verb, "look") == 0) {
+		if(strcmp(noun, "around") == 0 || strcmp(noun, "room") == 0) {
+			look(player.actorPos);
+		}
+		else if(strcmp(noun, "me") == 0) {
+			printMessage("You try to look at yourself, but you cannot see");
+			printMessage("inside your brain to view your stats.");
+		}
+	}
+
+	else if(strcmp(verb, "go") == 0) {
+		if(strcmp(noun, "north") == 0 || strcmp(noun, "n") == 0) {
+			move(&player, 'n');
+		}
+		else if(strcmp(noun, "south") == 0 || strcmp(noun, "s") == 0) {
+			move(&player, 's');
+		}
+		else if(strcmp(noun, "east") == 0 || strcmp(noun, "e") == 0) {
+			move(&player, 'e');
+		}
+		else if(strcmp(noun, "west") == 0 || strcmp(noun, "w") == 0) {
+			move(&player, 'w');
+		}
+		else {
+			printMessage("You can't go that way!");
+		}
+	}
+
+	// default "no-match" response
+	else {
+		printMessage("Invalid Command!");
+	}
+}

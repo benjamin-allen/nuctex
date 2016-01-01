@@ -2,7 +2,7 @@
 | NuCTex	| gamef.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 31 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
@@ -11,7 +11,6 @@
 #include "actor.h"
 #include <string.h>
 
-void callCommand(char* input);
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
 
@@ -19,7 +18,7 @@ int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 main game loop. Add things as needed */
 int gameLoop() {
 	while(game_isQuit != 1) {
-		callCommand(getInput());
+		parseInput(getInput());
 	}
 	return 0;
 }
@@ -107,41 +106,3 @@ void move(Actor* creature, char nsew) {
 			break;
 	}
 }
-
-void callCommand(char* input) {
-	// quit command
-	if(strcmp(input, "quit") == 0) {	// strcmp returns 0 on truth
-		quit();
-	}
-
-	else if(strcmp(input, "look") == 0) {
-		look(player.actorPos);
-	}
-
-	else if(strcmp(input, "north") == 0) {
-		move(&player, 'n');
-		look(player.actorPos);
-	}
-
-	else if(strcmp(input, "south") == 0) {
-		move(&player, 's');
-		look(player.actorPos);
-	}
-	
-	else if(strcmp(input, "east") == 0) {
-		move(&player, 'e');
-		look(player.actorPos);
-	}
-	
-	else if(strcmp(input, "west") == 0) {
-		move(&player, 'w');
-		look(player.actorPos);
-	}
-
-	// default "no-match" response
-	else {
-		printMessage("Invalid Command!");
-	}
-}
-
-
