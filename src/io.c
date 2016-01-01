@@ -64,7 +64,7 @@ void parseInput(char* input) {
 	char* overflow = strtok(NULL, " \n");
 
 	if(overflow != NULL) {
-		printf("Invalid command!");
+		printMessage("Invalid command!");
 		return;
 	}
 
@@ -77,31 +77,31 @@ void parseInput(char* input) {
 
 void callCommand(char* verb, char* noun) {
 	// quit command
-	if(strcmp(verb, "quit") == 0) {	// strcmp returns 0 on truth
+	if(checkOne(verb, "quit") == 0) {
 		quit();
 	}
 
-	else if(strcmp(verb, "look") == 0) {
-		if(strcmp(noun, "around") == 0 || strcmp(noun, "room") == 0) {
+	else if(checkOne(verb, "look") == 0) {
+		if(checkThree(noun, "!n", "around", "room") == 0) {
 			look(player.actorPos);
 		}
-		else if(strcmp(noun, "me") == 0) {
+		else if(checkOne(noun, "me") == 0) {
 			printMessage("You try to look at yourself, but you cannot see");
 			printMessage("inside your brain to view your stats.");
 		}
 	}
 
-	else if(strcmp(verb, "go") == 0) {
-		if(strcmp(noun, "north") == 0 || strcmp(noun, "n") == 0) {
+	else if(checkOne(verb, "go") == 0) {
+		if(checkTwo(noun, "north", "n") == 0) {
 			move(&player, 'n');
 		}
-		else if(strcmp(noun, "south") == 0 || strcmp(noun, "s") == 0) {
+		else if(checkTwo(noun, "south", "s") == 0) {
 			move(&player, 's');
 		}
-		else if(strcmp(noun, "east") == 0 || strcmp(noun, "e") == 0) {
+		else if(checkTwo(noun, "east", "e") == 0) {
 			move(&player, 'e');
 		}
-		else if(strcmp(noun, "west") == 0 || strcmp(noun, "w") == 0) {
+		else if(checkTwo(noun, "west", "w") == 0) {
 			move(&player, 'w');
 		}
 		else {
@@ -111,6 +111,45 @@ void callCommand(char* verb, char* noun) {
 
 	// default "no-match" response
 	else {
-		printMessage("Invalid Command!");
+		printMessage("Invalid command!");
+	}
+}
+
+int checkOne(char* toCheck, char* match) {
+	if(strcmp(toCheck, match) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
+int checkTwo(char* toCheck, char* match, char* matchTwo) {
+	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
+int checkThree(char* toCheck, char* match, char* matchTwo, char* matchThree) {
+	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0 ||
+	   strcmp(toCheck, matchThree) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
+int checkFour(char* toCheck, char* match, char* matchTwo, char* matchThree,
+          char* matchFour) {
+	if(strcmp(toCheck, match) ==0 || strcmp(toCheck, matchTwo) == 0 ||
+	   strcmp(toCheck, matchThree) == 0 || strcmp(toCheck, matchFour) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
 	}
 }
