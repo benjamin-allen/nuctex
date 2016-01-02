@@ -2,7 +2,7 @@
 | NuCTex	| gamef.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 31 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
@@ -11,7 +11,6 @@
 #include "actor.h"
 #include <string.h>
 
-void callCommand(char* input);
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
 
@@ -19,7 +18,7 @@ int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 main game loop. Add things as needed */
 int gameLoop() {
 	while(game_isQuit != 1) {
-		callCommand(getInput());
+		parseInput(getInput());
 	}
 	return 0;
 }
@@ -108,40 +107,53 @@ void move(Actor* creature, char nsew) {
 	}
 }
 
-void callCommand(char* input) {
+void callCommand(char* verb, char* noun) {
 	// quit command
-	if(strcmp(input, "quit") == 0) {	// strcmp returns 0 on truth
+	if(checkOne(verb, "quit") == 0) {
 		quit();
 	}
 
-	else if(strcmp(input, "look") == 0) {
-		look(player.actorPos);
+	else if(checkOne(verb, "look") == 0) {
+		if(checkThree(noun, "!n", "around", "room") == 0) {
+			look(player.actorPos);
+		}
+		else if(checkOne(noun, "me") == 0) {
+			printMessage("You try to look at yourself, but you cannot see");
+			printMessage("inside your brain to view your stats.");
+		}
 	}
 
-	else if(strcmp(input, "north") == 0) {
-		move(&player, 'n');
-		look(player.actorPos);
+	else if(checkOne(verb, "go") == 0) {
+		if(checkTwo(noun, "north", "n") == 0) {
+			move(&player, 'n');
+		}
+		else if(checkTwo(noun, "south", "s") == 0) {
+			move(&player, 's');
+		}
+		else if(checkTwo(noun, "east", "e") == 0) {
+			move(&player, 'e');
+		}
+		else if(checkTwo(noun, "west", "w") == 0) {
+			move(&player, 'w');
+		}
+		else {
+			printMessage("You can't go that way!");
+		}
 	}
-
-	else if(strcmp(input, "south") == 0) {
-		move(&player, 's');
-		look(player.actorPos);
-	}
-	
-	else if(strcmp(input, "east") == 0) {
-		move(&player, 'e');
-		look(player.actorPos);
-	}
-	
-	else if(strcmp(input, "west") == 0) {
-		move(&player, 'w');
-		look(player.actorPos);
+	else if(checkOne(verb, "kill") == 0) {
+		int i = 0;
+		while(i < MAX_MONSTERS) {
+			if(checkOne(noun, monster[i].name) == 0) {
+				if(player.actorPos == monster[i].actorPos) {
+					combat(&player, &monster[i]);
+				}
+			}
+			i++;
+		}
 	}
 
 	// default "no-match" response
 	else {
-		printMessage("Invalid Command!");
+		printMessage("Invalid command!");
 	}
 }
-
-

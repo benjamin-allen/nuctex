@@ -2,7 +2,7 @@
 | NuCTex	| combat.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 29 December, 2015
-| Changed	| 31 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declaration of combat systems
 \-----------------------------------------------------------------------------*/
@@ -11,7 +11,7 @@
 
 // Main combat functions
 void combat(Actor*, Actor*);
-int inputAction();
+int fightMenu();
 int hasRun;
 
 // Combat actions

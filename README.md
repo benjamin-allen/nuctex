@@ -14,7 +14,7 @@ Alpha. See the milestones page for more details.
 ###Current features
 * Walk around in an exciting 4-tile world!
 * Experience the ability to look at your surroundings (and other monsters!)
-* Enjoy great power in avoiding the dreaded segfaults!
+* Fight with the evil monsters that lurk about, and destroy them utterly!
 * Properly quit the program!
 
 ###Commands?
@@ -37,7 +37,3 @@ any recent version of GCC.
 
 These steps have been tested with a computer running Debian 7 ARM and a computer
 running 64-bit Arch Linux.
-
-##Others (Windows, Mac, etc.)
-For Windows, the most likely workable option is to use MinGW. Mac users should
-hace access to an implementation of GCC.

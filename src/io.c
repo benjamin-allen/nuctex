@@ -2,7 +2,7 @@
 | NuCTex	| io.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 27 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement member functions of io.h
 \-----------------------------------------------------------------------------*/
@@ -55,3 +55,60 @@ char* getInput() {
 
 	return pLine;
 };
+
+
+void parseInput(char* input) {
+	char* v = strtok(input, " \n");
+	char* n = strtok(NULL, " \n");
+	char* overflow = strtok(NULL, " \n");
+
+	if(overflow != NULL) {
+		printMessage("Invalid command!");
+		return;
+	}
+
+	if(n == NULL) {
+		n = "!n";
+	}
+
+	callCommand(v, n);
+}
+
+int checkOne(char* toCheck, char* match) {
+	if(strcmp(toCheck, match) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
+int checkTwo(char* toCheck, char* match, char* matchTwo) {
+	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
+int checkThree(char* toCheck, char* match, char* matchTwo, char* matchThree) {
+	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0 ||
+	   strcmp(toCheck, matchThree) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
+int checkFour(char* toCheck, char* match, char* matchTwo, char* matchThree,
+          char* matchFour) {
+	if(strcmp(toCheck, match) ==0 || strcmp(toCheck, matchTwo) == 0 ||
+	   strcmp(toCheck, matchThree) == 0 || strcmp(toCheck, matchFour) == 0) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}

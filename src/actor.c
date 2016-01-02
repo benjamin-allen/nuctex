@@ -2,7 +2,7 @@
 | NuCTex	| actor.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 12 December, 2015
-| Changed	| 27 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement actors
 \-----------------------------------------------------------------------------*/
@@ -20,7 +20,7 @@ Actor player = {
 	.actorPos=&nw
 };
 
-Actor monster[2] = {
+Actor monster[MAX_MONSTERS] = {
 	{
 		.name="Grue",
 		.health=25,
