@@ -20,7 +20,7 @@ Actor player = {
 	.actorPos=&nw
 };
 
-Actor monster[2] = {
+Actor monster[MAX_MONSTERS] = {
 	{
 		.name="Grue",
 		.health=25,

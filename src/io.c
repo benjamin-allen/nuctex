@@ -108,6 +108,19 @@ void callCommand(char* verb, char* noun) {
 			printMessage("You can't go that way!");
 		}
 	}
+	else if(checkOne(verb, "kill") == 0) {
+		int i = 0;
+		while(i < MAX_MONSTERS) {
+			if(checkOne(noun, monster[i].name) == 0 &&
+			   player.actorPos == monster[i].actorPos) {
+				combat(&player, &monster[i]);
+			}
+			else {
+				printMessage("There is no such monster here");
+			}
+			i++;
+		}
+	}
 
 	// default "no-match" response
 	else {

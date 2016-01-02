@@ -14,17 +14,15 @@
 #include "math.h"
 
 void combat(Actor* player, Actor* creature) {
+	printMessage("The monster stands before you menacingly.");
+	
 	while(player->health > 0 && hasRun == 0 && creature->health > 0) {
-		int action = inputAction();
+		int action = fightMenu();
 		switch(action) {
-			case 1: attack(player, creature);
-				break;
-			case 2: run(player, creature);
-				if(hasRun == 0) {
-					printMessage("You try to flee, but can't...");
-				}
-				break;
-			default: break;
+			case 0: printMessage("Invalid input!");
+			case 1: attack(player, creature); break;
+			case 2: run(player, creature); break;
+			default: printMessage("OH GOD");
 		}
 	}
 	if(player->health <= 0) {
@@ -38,16 +36,18 @@ void combat(Actor* player, Actor* creature) {
 	}
 }
 
-int inputAction() {
-	printMessage("What would you like to do?");
-	printMessage("1: Attack");
-	printMessage("2: Run");
-	char input;
-	scanf(" %c", &input);
-	switch(input) {
-		case '1': return 1;
-		case '2': return 2;
-		default : printMessage("Invalid input!");
+int fightMenu() {
+	printMessage("1: Attack | 2: Flee");
+	char* choice = getInput();
+	removeNewline(choice);
+	if(checkOne(choice, "1") == 0) {
+		return 1;
+	}
+	else if(checkOne(choice, "2") == 0) {
+		return 2;
+	}
+	else {
+		printMessage("Invalid command!");
 	}
 }
 
