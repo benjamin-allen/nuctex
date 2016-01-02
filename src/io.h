@@ -6,6 +6,8 @@
 |-------------------------------------------------------------------------------
 | Overview	| Prototype declarations for the input functions
 \-----------------------------------------------------------------------------*/
+#ifndef NULLSRC_IO_HEADER
+#define NULLSRC_IO_HEADER
 
 
 // Input Functions
@@ -25,3 +27,5 @@ int checkOne(char*, char*);
 int checkTwo(char*, char*, char*);
 int checkThree(char*, char*, char*, char*);
 int checkFour(char*, char*, char*, char*, char*);
+
+#endif /* NULLSRC_IO_HEADER */

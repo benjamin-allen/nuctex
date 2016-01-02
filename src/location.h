@@ -2,10 +2,12 @@
 | NuCTex	| location.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 25 November, 2015
-| Changed	| 12 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Define structs and functions used in the location code
 \-----------------------------------------------------------------------------*/
+#ifndef NULLSRC_LOCATION_HEADER
+#define NULLSRC_LOCATION_HEADER
 
 /* this is the main location structure.
 one location represents one map tile */
@@ -27,3 +29,5 @@ Location nw;
 Location ne;
 Location sw;
 Location se;
+
+#endif /* NULLSRC_LOCATION_HEADER */

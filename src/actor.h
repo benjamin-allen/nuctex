@@ -6,6 +6,8 @@
 |-------------------------------------------------------------------------------
 | Overview	| Define actor struct
 \-----------------------------------------------------------------------------*/
+#ifndef NULLSRC_ACTOR_HEADER
+#define NULLSRC_ACTOR_HEADER
 
 #include "location.h"
 #define MAX_MONSTERS 2
@@ -23,3 +25,5 @@ typedef struct Actor {
 
 Actor player;
 Actor monster[MAX_MONSTERS];
+
+#endif /* NULLSRC_ACTOR_HEADER */
