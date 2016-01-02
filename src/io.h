@@ -19,7 +19,6 @@ void printDamage(int, char*);
 
 // Parser Functions
 void parseInput(char*);
-void callCommand(char*, char*);
 
 // String Comparison Functions
 int checkOne(char*, char*);

@@ -8,7 +8,6 @@
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
-#include "gamef.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -73,59 +72,6 @@ void parseInput(char* input) {
 	}
 
 	callCommand(v, n);
-}
-
-void callCommand(char* verb, char* noun) {
-	// quit command
-	if(checkOne(verb, "quit") == 0) {
-		quit();
-	}
-
-	else if(checkOne(verb, "look") == 0) {
-		if(checkThree(noun, "!n", "around", "room") == 0) {
-			look(player.actorPos);
-		}
-		else if(checkOne(noun, "me") == 0) {
-			printMessage("You try to look at yourself, but you cannot see");
-			printMessage("inside your brain to view your stats.");
-		}
-	}
-
-	else if(checkOne(verb, "go") == 0) {
-		if(checkTwo(noun, "north", "n") == 0) {
-			move(&player, 'n');
-		}
-		else if(checkTwo(noun, "south", "s") == 0) {
-			move(&player, 's');
-		}
-		else if(checkTwo(noun, "east", "e") == 0) {
-			move(&player, 'e');
-		}
-		else if(checkTwo(noun, "west", "w") == 0) {
-			move(&player, 'w');
-		}
-		else {
-			printMessage("You can't go that way!");
-		}
-	}
-	else if(checkOne(verb, "kill") == 0) {
-		int i = 0;
-		while(i < MAX_MONSTERS) {
-			if(checkOne(noun, monster[i].name) == 0 &&
-			   player.actorPos == monster[i].actorPos) {
-				combat(&player, &monster[i]);
-			}
-			else {
-				printMessage("There is no such monster here");
-			}
-			i++;
-		}
-	}
-
-	// default "no-match" response
-	else {
-		printMessage("Invalid command!");
-	}
 }
 
 int checkOne(char* toCheck, char* match) {

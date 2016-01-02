@@ -2,7 +2,7 @@
 | NuCTex	| combat.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 29 December, 2015
-| Changed	| 29 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implementation of combat systems. Menu selection for which
 |			| creature will be fought is implemented in gamef.c
@@ -19,7 +19,7 @@ void combat(Actor* player, Actor* creature) {
 	while(player->health > 0 && hasRun == 0 && creature->health > 0) {
 		int action = fightMenu();
 		switch(action) {
-			case 0: printMessage("Invalid input!");
+			case 0: printMessage("Invalid input!"); break;
 			case 1: attack(player, creature); break;
 			case 2: run(player, creature); break;
 			default: printMessage("OH GOD");
@@ -32,7 +32,7 @@ void combat(Actor* player, Actor* creature) {
 		printMessage("You manage to flee the fight.");
 	}
 	else if(creature->health <=0) {
-		printMessage("You slay the monster");
+		printMessage("You slay the monster.");
 	}
 }
 
@@ -47,7 +47,7 @@ int fightMenu() {
 		return 2;
 	}
 	else {
-		printMessage("Invalid command!");
+		return 0;
 	}
 }
 

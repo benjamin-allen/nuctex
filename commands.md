@@ -12,5 +12,14 @@ The main movement command is `go`. `go` can be combined with the nouns `north`,
 to see what is in the room, or, alternately, use `look room`. While looking at
 yourself, called with `look me` won't do much yet, it's something you can do.
 
+##Fighting
+You can fight a monster that is in the same location that you are in by typing
+`kill <monster>`. If you don't know the name of a monster that you're trying to
+kill, you can learn the names of the monsters in the available area with the
+`look` command.
+
+Once in combat, you can either attack the monster or try to flee. Both are
+dependent on your stats.
+
 ##System
 `quit` is the command issued to quit the game cleanly.

@@ -10,6 +10,7 @@
 #include "actor.h"
 // Game control
 int gameLoop();
+void callCommand(char*, char*)
 
 // Game Commands
 void quit();	// 'quit'
