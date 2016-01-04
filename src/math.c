@@ -2,7 +2,7 @@
 | NuCTex	| math.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 30 December, 2015
-| Changed	| 31 December, 2015
+| Changed	| 4 January, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Implementation of various mathematical functions used in the game
 \-----------------------------------------------------------------------------*/
@@ -23,7 +23,7 @@ int rng(int low, int high) {
 	return temp;
 }
 
-int zrng(int range) {
+int arng(int range) {
 	int temp = rand() % (range + 1);
 	return temp;
 }
@@ -33,6 +33,16 @@ int brng() {
 	return temp;
 }
 
+int crng(int num, int den) {
+	int temp = rand() % den;
+	if(temp < num) {
+		return 0;
+	}
+	else {
+		return temp;
+	}
+}
+
 int calcDamage(int strength) {
 	int damageTotal = 0;
 	damageTotal = rng(strength - (strength/4), strength + (strength/5));
@@ -40,7 +50,7 @@ int calcDamage(int strength) {
 }
 
 int runAway(int escapingAgility, int chasingAgility) {
-	if((escapingAgility + zrng(escapingAgility/3)) > chasingAgility) {
+	if((escapingAgility + arng(escapingAgility/3)) > chasingAgility) {
 		return 1;
 	}
 	else {

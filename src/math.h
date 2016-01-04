@@ -2,7 +2,7 @@
 | NuCTex	| math.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 30 December, 2015
-| Changed	| 1 January, 2016
+| Changed	| 4 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declaration of mathematics functions used in the game
 \-----------------------------------------------------------------------------*/
@@ -12,8 +12,9 @@
 // RNG functions
 void randInit();
 int rng(int, int);
-int zrng(int);
+int arng(int);
 int brng();
+int crng(int, int);
 
 // Combat functions
 int calcDamage(int);
