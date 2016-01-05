@@ -2,22 +2,25 @@
 | NuCTex	| combat.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 29 December, 2015
-| Changed	| 29 December, 2015
+| Changed	| 5 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declaration of combat systems
 \-----------------------------------------------------------------------------*/
+#ifndef NULLSRC_COMBAT_HEADER
+#define NULLSRC_COMBAT_HEADER
 
 #include "actor.h"
 
 // Main combat functions
-void combat(Actor*, Actor*);
-int inputAction();
-int hasRun = 0;
+int combat(Actor*, Actor*);
+int fightMenu();
+int hasRun;
 
 // Combat actions
-void attack(Actor*, Actor*);
+void attack(Actor*, Actor*, int);
 void run(Actor*, Actor*);
 
-// Math functions
-int calcDamage(int);
-int runAway(int, int);
+// Monster functions
+void monsterAct(int, Actor*, Actor*);
+
+#endif /* NULLSRC_COMBAT_HEADER */

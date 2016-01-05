@@ -2,12 +2,15 @@
 | NuCTex	| actor.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 12 December, 2015
-| Changed	| 27 December, 2015
+| Changed	| 1 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Define actor struct
 \-----------------------------------------------------------------------------*/
+#ifndef NULLSRC_ACTOR_HEADER
+#define NULLSRC_ACTOR_HEADER
 
 #include "location.h"
+#define MAX_MONSTERS 2
 
 typedef struct Actor {
 	char* name;
@@ -21,4 +24,6 @@ typedef struct Actor {
 }Actor;
 
 Actor player;
-Actor monster[2];
+Actor monster[MAX_MONSTERS];
+
+#endif /* NULLSRC_ACTOR_HEADER */
