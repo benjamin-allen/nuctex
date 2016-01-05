@@ -2,7 +2,7 @@
 | NuCTex	| location.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 25 November, 2015
-| Changed	| 12 December, 2015
+| Changed	| 5 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| All of the game's location definitions go here.
 |-------------------------------------------------------------------------------

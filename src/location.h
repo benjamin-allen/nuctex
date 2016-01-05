@@ -2,7 +2,7 @@
 | NuCTex	| location.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 25 November, 2015
-| Changed	| 1 January, 2016
+| Changed	| 4 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Define structs and functions used in the location code
 \-----------------------------------------------------------------------------*/

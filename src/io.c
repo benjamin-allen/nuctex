@@ -2,7 +2,7 @@
 | NuCTex	| io.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 1 January, 2016
+| Changed	| 5 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement member functions of io.h
 \-----------------------------------------------------------------------------*/
