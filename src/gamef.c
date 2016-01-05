@@ -145,7 +145,7 @@ void callCommand(char* verb, char* noun) {
 		while(i < MAX_MONSTERS) {
 			if(checkOne(noun, monster[i].name) == 0) {
 				if(player.actorPos == monster[i].actorPos) {
-					combat(&player, &monster[i]);
+					game_isQuit = combat(&player, &monster[i]);
 				}
 			}
 			i++;

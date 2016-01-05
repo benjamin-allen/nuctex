@@ -29,5 +29,6 @@ Location nw;
 Location ne;
 Location sw;
 Location se;
+Location dead;
 
 #endif /* NULLSRC_LOCATION_HEADER */

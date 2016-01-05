@@ -12,12 +12,15 @@
 #include "actor.h"
 
 // Main combat functions
-void combat(Actor*, Actor*);
+int combat(Actor*, Actor*);
 int fightMenu();
 int hasRun;
 
 // Combat actions
-void attack(Actor*, Actor*);
+void attack(Actor*, Actor*, int);
 void run(Actor*, Actor*);
+
+// Monster functions
+void monsterAct(int, Actor*, Actor*);
 
 #endif /* NULLSRC_COMBAT_HEADER */
