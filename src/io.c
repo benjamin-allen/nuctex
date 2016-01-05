@@ -28,18 +28,6 @@ void printDamage(int damage, char* creatureName) {
 	printf("You did %i damage to the %s!\n", damage, creatureName);
 }
 
-/* removeNewline() ---
-remove the extraneous newline char from the fgets output. */
-char* removeNewline(char* line) {
-	char* nlpos;	// temporary pointer to traverse the array
-
-	/* IF the comparison between pos and a character (in this case, newline) 
-	does not return false, change that character to a null. */
-	if((nlpos=strchr(line, '\n')) != NULL) {
-		*nlpos = '\0';
-	}
-}
-
 /* getInput() ---
 capture input from the command line. As a nice touch, waits for the user. */
 char* getInput() {
@@ -50,8 +38,7 @@ char* getInput() {
 								CLI) and save it to pLine. Input cannot be
 								longer than 64 bytes */
 
-	removeNewline(pLine);	/* remove the extraneous newline saved by fgets.
-							This makes various parsing actions far easier. */
+	strtok(pLine, "\n");
 
 	return pLine;
 };
@@ -59,6 +46,10 @@ char* getInput() {
 
 void parseInput(char* input) {
 	char* v = strtok(input, " \n");
+	if(v == NULL) {
+		printMessage("Unusable Input");
+		return;
+	}
 	char* n = strtok(NULL, " \n");
 	char* overflow = strtok(NULL, " \n");
 
