@@ -2,13 +2,15 @@
 | NuCTex	| actor.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 12 December, 2015
-| Changed	| 1 January, 2016
+| Changed	| 5 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement actors
 \-----------------------------------------------------------------------------*/
 
 #include "actor.h"
 
+/* This object contains the information for the player character. Expect this to
+   expand in future updates, but things are very basic for the alpha */
 Actor player = {
 	.name="Nullsrc",
 	.health=100,
@@ -20,6 +22,8 @@ Actor player = {
 	.actorPos=&nw
 };
 
+/* This array of monsters contains all of the monsters in the game. MAX_MONSTERS
+   is declared in actor.h as it is used in multiple files */
 Actor monster[MAX_MONSTERS] = {
 	{
 		.name="Grue",

@@ -19,7 +19,8 @@ kill, you can learn the names of the monsters in the available area with the
 `look` command.
 
 Once in combat, you can either attack the monster or try to flee. Both are
-dependent on your stats.
+dependent on your stats. You can also rest, but the action does nothing at
+present and exists for debugging purposes
 
 ##System
 `quit` is the command issued to quit the game cleanly.

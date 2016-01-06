@@ -13,11 +13,24 @@
 #include "io.h"
 #include "math.h"
 
+
+/* combat(Actor*, Actor*) ---
+   The combat function is the main loop for the combat system. It calls several
+   other functions. The int returned is intended to be used with the game_isQuit
+   variable, to simulate player death. It will eventually be phased out in favor
+   of a better death system (current thoughts point towards listing all killed
+   monsters by moving the player to the dead location) */
 int combat(Actor* player, Actor* creature) {
 	printMessage("The monster stands before you menacingly.");
 	
+	/* This is the main combat loop. It will exit when the player has run, or
+	   either the player or monster has died */
 	while(player->health > 0 && hasRun == 0 && creature->health > 0) {
+		// action integer stores the value returned by fightMenu()
 		int action = fightMenu();
+
+		/* This switch statement controls the various actions of combat, and is
+		   intended to use action as it's value to check */
 		switch(action) {
 			case 0:
 				break;
@@ -32,11 +45,17 @@ int combat(Actor* player, Actor* creature) {
 				break;
 			default: printMessage("AH! THAT'S NOT OKAY!");
 		}
-
+		
+		/* This function controls monster actions, and is a placeholder until
+		   a more sophisticated system that utilizes AI flags is in place */
 		monsterAct(arng(10), player, creature); 
 	}
+
+	// These conditionals handle the after-battle cleanup
 	if(player->health <= 0) {
 		printMessage("You have died.");
+
+		// return value of 1 sets game_isQuit to 1
 		return 1;
 	}
 	else if(hasRun != 0) {
@@ -45,11 +64,15 @@ int combat(Actor* player, Actor* creature) {
 	}
 	else if(creature->health <=0) {
 		printMessage("You slay the monster.");
+
+		// Move the creature to the location reserved for dead things
 		creature->actorPos = &dead;
 		return 0;
 	}
 }
 
+/* fightMenu() ---
+   Returns integers based on the user input */
 int fightMenu() {
 	printMessage("1: Attack | 2: Rest | 3: Flee");
 	char* choice = getInput();
@@ -67,7 +90,11 @@ int fightMenu() {
 	}
 }
 
+/* monsterAct(int, Actor*, Actor*) ---
+   Controls the current monster AI (what little there is). Player is passed to
+   allow the use of an attack call from the monster */
 void monsterAct(int number, Actor* player, Actor* creature) {
+	// number should be produced from an arng call until the system is rewritten
 	if(number == 0) {
 		printMessage("The monster is still, and appears to be taking a rest");
 	}
@@ -76,6 +103,9 @@ void monsterAct(int number, Actor* player, Actor* creature) {
 	}
 }
 
+/* attack(Actor*, Actor*, int) ---
+   Call a damage calculation given two actor's stats. The int should only be 1
+   when the player is attacking */
 void attack(Actor* attacker, Actor* defender, int isPlayerAttacking) {
 	int damage = calcDamage(attacker->strength);
 	defender->health -= damage;
@@ -87,6 +117,8 @@ void attack(Actor* attacker, Actor* defender, int isPlayerAttacking) {
 	}
 }
 
+/* run(Actor*, Actor*) ---
+   Call a run calculation given two actor's stats. */
 void run(Actor* escaping, Actor* chasing) {
 	hasRun = runAway(escaping->agility, chasing->agility);
 }

@@ -54,7 +54,7 @@ void look(Location* room) {
 		exits = exits + 8;
 	}
 
-	/* this switch statement prints the exits when given an integer. If an
+	/* This switch statement prints the exits when given an integer. If an
 	improper number is given, the statement will default to printing no
 	exits */
 	switch(exits) {
@@ -79,7 +79,9 @@ void look(Location* room) {
 	}
 	int i = 0;
 	int isMonsterHere = 0;
-	while(i < 2) {
+
+	// The following code calls a check against all monsers for their position
+	while(i < MAX_MONSTERS) {
 		if(monster[i].actorPos == player.actorPos &&
 			monster[i].actorPos == room) {
 			printMonster(monster[i].name);
@@ -92,6 +94,9 @@ void look(Location* room) {
 	}
 }
 
+/* move(Actor*, char) ---
+   Move the creature specified north, south, east, or west based on the char
+   passed */
 void move(Actor* creature, char nsew) {
 	switch(nsew) {
 		case 'n': creature->actorPos = creature->actorPos->n; 
@@ -107,12 +112,17 @@ void move(Actor* creature, char nsew) {
 	}
 }
 
+/* callCommand(char*, char*) ---
+   Run a series of string comparisons on verb and noun to determine the proper
+   function to call. Should be called after parsing user input into a verb and
+   a noun */
 void callCommand(char* verb, char* noun) {
-	// quit command
+	// quit is never called with a noun argument
 	if(checkOne(verb, "quit") == 0) {
 		quit();
 	}
 
+	// parsing for the look command
 	else if(checkOne(verb, "look") == 0) {
 		if(checkThree(noun, "!n", "around", "room") == 0) {
 			look(player.actorPos);
@@ -123,6 +133,7 @@ void callCommand(char* verb, char* noun) {
 		}
 	}
 
+	// parsing for the go command
 	else if(checkOne(verb, "go") == 0) {
 		if(checkTwo(noun, "north", "n") == 0) {
 			move(&player, 'n');
@@ -140,6 +151,8 @@ void callCommand(char* verb, char* noun) {
 			printMessage("You can't go that way!");
 		}
 	}
+
+	// parsing for the kill command
 	else if(checkOne(verb, "kill") == 0) {
 		int i = 0;
 		while(i < MAX_MONSTERS) {

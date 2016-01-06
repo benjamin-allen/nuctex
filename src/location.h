@@ -2,7 +2,7 @@
 | NuCTex	| location.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 25 November, 2015
-| Changed	| 4 January, 2016
+| Changed	| 5 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Define structs and functions used in the location code
 \-----------------------------------------------------------------------------*/
@@ -29,6 +29,9 @@ Location nw;
 Location ne;
 Location sw;
 Location se;
+
+
+// Game-critical locations
 Location dead;
 
 #endif /* NULLSRC_LOCATION_HEADER */
