@@ -2,7 +2,7 @@
 | NuCTex	| math.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 30 December, 2015
-| Changed	| 4 January, 2016
+| Changed	| 7 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declaration of mathematics functions used in the game
 \-----------------------------------------------------------------------------*/
@@ -10,7 +10,7 @@
 #define NULLSRC_MATH_HEADER
 
 // RNG functions
-void randInit();
+void initRand();
 int rng(int, int);
 int arng(int);
 int brng();

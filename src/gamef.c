@@ -2,13 +2,14 @@
 | NuCTex	| gamef.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 5 January, 2016
+| Changed	| 7 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
 #include "actor.h"
+#include "combat.h"
 #include <string.h>
 
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
@@ -167,6 +168,6 @@ void callCommand(char* verb, char* noun) {
 
 	// default "no-match" response
 	else {
-		printMessage("Invalid command!");
+		printMessage("Invalid input");
 	}
 }

@@ -2,7 +2,7 @@
 | NuCTex	| combat.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 29 December, 2015
-| Changed	| 5 January, 2016
+| Changed	| 7 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implementation of combat systems. Menu selection for which
 |			| creature will be fought is implemented in gamef.c
@@ -67,6 +67,9 @@ int combat(Actor* player, Actor* creature) {
 
 		// Move the creature to the location reserved for dead things
 		creature->actorPos = &dead;
+		return 0;
+	}
+	else {
 		return 0;
 	}
 }
