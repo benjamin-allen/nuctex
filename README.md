@@ -12,9 +12,15 @@ The long-term goal is to create a fully functional engine from which any user
 can create a game with locations, monsters, and puzzles to solve.
 
 ##Development Status
-NuCTex went into alpha on January 5, 2016, and is now at version 0.1a. It still
-has very few enjoyable, game-like qualities implemented, but 0.1 is a functional
-release that can be used to experiment with some of the engine's systems.
+NuCTex went into alpha on January 5, 2016, and is now at version 0.1a.1.
+
+It still has very few enjoyable, game-like qualities implemented, but 0.1 is a
+functional release that can be used to experiment with some of the engine's
+systems. The alpha version numbers will stay in the 0.1 range to reflect the
+incompleteness of the engine and the large number of features still required to
+be implemented. 0.1 releases focus on adding mechanics, which is the focus of
+the alpha. Beta releases will focus on cleaning up the mechanics and adding any
+minor features.
 
 ###Version Numbering
 Pre-Alpha 	--- No version numbers
