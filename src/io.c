@@ -11,6 +11,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#define ANSI_RED		"\x1b[31m"
+#define ANSI_GREEN		"\x1b[32m"
+#define ANSI_YELLOW		"\x1b[33m"
+#define ANSI_BLUE		"\x1b[34m"
+#define ANSI_MAGENTA	"\x1b[35m"
+#define ANSI_CYAN		"\x1b[35m"
+#define ANSI_RESET		"\x1b[0m"
+
 char command[64]; 	// filewide char array to be used to command parsing
 
 /* printMessage() ---
@@ -41,6 +49,7 @@ char* getInput() {
 	   not go out of scope. Bad things happen if it does */
 	char* pLine = command;	
 
+	printf(ANSI_RED "=[ " ANSI_RESET);
 	/* retrieve input from stdin (user input to the
 	   CLI) and save it to pLine. Input cannot be
 	   longer than 64 bytes */
