@@ -16,7 +16,7 @@
 #define ANSI_YELLOW		"\x1b[33m"
 #define ANSI_BLUE		"\x1b[34m"
 #define ANSI_MAGENTA	"\x1b[35m"
-#define ANSI_CYAN		"\x1b[35m"
+#define ANSI_CYAN		"\x1b[36m"
 #define ANSI_RESET		"\x1b[0m"
 
 char command[64]; 	// filewide char array to be used to command parsing
@@ -26,6 +26,9 @@ print the c-string passed. Can be called with printMessage("This is a string")
 as well. */
 void printMessage(char* message) {
 	printf("%s\n", message);	// append a newline char before printing
+}
+void printMessageC(char* message, char* color) {
+	printf("%s%s%s\n", color, message, ANSI_RESET);
 }
 
 /* printMonster(char*) ---
@@ -49,7 +52,7 @@ char* getInput() {
 	   not go out of scope. Bad things happen if it does */
 	char* pLine = command;	
 
-	printf(ANSI_RED "=[ " ANSI_RESET);
+	printf(ANSI_CYAN ">> " ANSI_RESET);
 	/* retrieve input from stdin (user input to the
 	   CLI) and save it to pLine. Input cannot be
 	   longer than 64 bytes */
