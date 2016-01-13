@@ -8,9 +8,7 @@
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
-#include "actor.h"
 #include "combat.h"
-#include <string.h>
 
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
