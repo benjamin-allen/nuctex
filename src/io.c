@@ -25,8 +25,31 @@ char command[64]; 	// filewide char array to be used to command parsing
 print the c-string passed. Can be called with printMessage("This is a string")
 as well. */
 void printMessage(char* message) {
-	printf("%s\n", message);	// append a newline char before printing
+	char tempText[2400];
+	strcpy(tempText, message);
+	int i = 0;
+	int delim = 80;
+	for(; tempText[i] != '\0' ; i++) {
+		if(i == delim && i > 0) {
+			if(tempText[i] == ' ') {
+				tempText[i] = '\n';
+				delim += 80;
+			}
+			else {
+				int j = i;
+				int k = 0;
+				while(tempText[j] != ' ') {
+					j--;
+					k++;
+				}
+				tempText[j] = '\n';
+				delim += (80-k);
+			}
+		}
+	}
+	printf("%s\n", tempText);
 }
+
 void printMessageC(char* message, char* color) {
 	printf("%s%s%s\n", color, message, ANSI_RESET);
 }

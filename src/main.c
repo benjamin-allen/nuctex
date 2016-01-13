@@ -13,7 +13,7 @@
 
 int main() {
 	initRand();
-	printMessage("Welcome to NuCTex 0.1a.1");
+	printMessage("Welcome to NuCTex 0.1a.1. This is a lot of text that is longer than 80 characters long because it takes a lot of space to type. This is some filler text to test even more of the stuff that the code is supposed to do but might not correctly because I'm not a terribly good coder");
 	gameLoop();
 
 	return 0;
