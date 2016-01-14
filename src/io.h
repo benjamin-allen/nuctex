@@ -2,7 +2,7 @@
 | NuCTex	| io.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 7 January, 2016
+| Changed	| 14 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Prototype declarations for the input functions
 \-----------------------------------------------------------------------------*/
@@ -23,12 +23,14 @@ char* removeNewline(char*);
 
 // Output Functions
 void printMessage(char*);
+void printMessageC(char*);
 void printMonster(char*);
 void printDamage(int, char*);
+void printStats(int);
 
 // Parser Functions
 void parseInput(char*);
-void callCommand(char*, char*);
+void callCommand(char*, char*); //Defined in gamef.c
 
 // String Comparison Functions
 int checkOne(char*, char*);
