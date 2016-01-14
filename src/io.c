@@ -90,6 +90,10 @@ void printDamage(int damage, char* creatureName) {
 	printf("You did %i damage to the %s!\n", damage, creatureName);
 }
 
+void printStats(int health) {
+	printf("| %s%i%s HP |\n", ANSI_GREEN, health, ANSI_RESET);
+}
+
 /* getInput() ---
 capture input from the command line. As a nice touch, waits for the user. */
 char* getInput() {

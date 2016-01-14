@@ -127,8 +127,7 @@ void callCommand(char* verb, char* noun) {
 			look(player.actorPos);
 		}
 		else if(checkOne(noun, "me") == 0) {
-			printMessage("You try to look at yourself, but you cannot see");
-			printMessage("inside your brain to view your stats.");
+			printStats(player.health);
 		}
 	}
 
