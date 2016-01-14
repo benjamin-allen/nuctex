@@ -51,7 +51,29 @@ void printMessage(char* message) {
 }
 
 void printMessageC(char* message, char* color) {
-	printf("%s%s%s\n", color, message, ANSI_RESET);
+	char tempText[2400];
+	strcpy(tempText, message);
+	int i = 0;
+	int delim = 80;
+	for(; tempText[i] != '\0' ; i++) {
+		if(i == delim && i > 0) {
+			if(tempText[i] == ' ') {
+				tempText[i] = '\n';
+				delim += 80;
+			}
+			else {
+				int j = i;
+				int k = 0;
+				while(tempText[j] != ' ') {
+					j--;
+					k++;
+				}
+				tempText[j] = '\n';
+				delim += (80-k);
+			}
+		}
+	}
+	printf("%s%s%s\n", color, tempText, ANSI_RESET);
 }
 
 /* printMonster(char*) ---
