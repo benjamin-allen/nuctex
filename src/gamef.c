@@ -36,6 +36,7 @@ void quit() {
 print the description of a given location. Usually used in conjuction with
 the move functions. */
 void look(Location* room) {
+	printMessageC("================================================================================", ANSI_MAGENTA);
 	int exits = 0;
 	printMessage(room->description);
 	/* the following chunk of if statments increment the exit integer to act as
@@ -91,6 +92,7 @@ void look(Location* room) {
 	if(isMonsterHere == 1) {
 		printMessage("");
 	}
+	printMessageC("================================================================================", ANSI_MAGENTA);
 }
 
 /* move(Actor*, char) ---

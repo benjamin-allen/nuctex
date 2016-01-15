@@ -23,7 +23,7 @@ char* removeNewline(char*);
 
 // Output Functions
 void printMessage(char*);
-void printMessageC(char*);
+void printMessageC(char*, char*);
 void printMonster(char*);
 void printDamage(int, char*);
 void printStats(int);
