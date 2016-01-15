@@ -77,7 +77,9 @@ int combat(Actor* player, Actor* creature) {
 /* fightMenu() ---
    Returns integers based on the user input */
 int fightMenu() {
-	printMessage("1: Attack | 2: Rest | 3: Flee");
+	printMessageC("=============================", ANSI_RED);
+	printMessageC("1: Attack | 2: Rest | 3: Flee", ANSI_YELLOW);
+	printMessageC("=============================", ANSI_RED);
 	char* choice = getInput();
 	if(checkOne(choice, "1") == 0) {
 		return 1;

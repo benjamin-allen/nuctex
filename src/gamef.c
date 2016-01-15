@@ -2,15 +2,13 @@
 | NuCTex	| gamef.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 7 January, 2016
+| Changed	| 13 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
-#include "actor.h"
 #include "combat.h"
-#include <string.h>
 
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
@@ -38,6 +36,7 @@ void quit() {
 print the description of a given location. Usually used in conjuction with
 the move functions. */
 void look(Location* room) {
+	printMessageC("================================================================================", ANSI_MAGENTA);
 	int exits = 0;
 	printMessage(room->description);
 	/* the following chunk of if statments increment the exit integer to act as
@@ -93,6 +92,7 @@ void look(Location* room) {
 	if(isMonsterHere == 1) {
 		printMessage("");
 	}
+	printMessageC("================================================================================", ANSI_MAGENTA);
 }
 
 /* move(Actor*, char) ---
@@ -129,8 +129,7 @@ void callCommand(char* verb, char* noun) {
 			look(player.actorPos);
 		}
 		else if(checkOne(noun, "me") == 0) {
-			printMessage("You try to look at yourself, but you cannot see");
-			printMessage("inside your brain to view your stats.");
+			printStats(player.health);
 		}
 	}
 
