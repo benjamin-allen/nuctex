@@ -2,7 +2,7 @@
 | NuCTex	| gamef.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 13 January, 2016
+| Changed	| 17 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
@@ -100,13 +100,43 @@ void look(Location* room) {
    passed */
 void move(Actor* creature, char nsew) {
 	switch(nsew) {
-		case 'n': creature->actorPos = creature->actorPos->n; 
+		case 'n':
+			/* Conditional check for whether there's actually something at the
+			   desired location. Only passes if there is */
+			if(creature->actorPos->n) {
+				creature->actorPos = creature->actorPos->n; 
+				look(creature->actorPos);
+			}
+			else {
+				printMessageC("You can't go that way!", ANSI_RED);
+			}
 			break;
-		case 's': creature->actorPos = creature->actorPos->s; 
+		case 's':
+			if(creature->actorPos->s) {
+				creature->actorPos = creature->actorPos->s; 
+				look(creature->actorPos);
+			}
+			else {
+				printMessageC("You can't go that way!", ANSI_RED);
+			}
 			break;
-		case 'e': creature->actorPos = creature->actorPos->e;
+		case 'e':
+			if(creature->actorPos->e) {
+				creature->actorPos = creature->actorPos->e;
+				look(creature->actorPos);
+			}
+			else {
+				printMessageC("You can't go that way!", ANSI_RED);
+			}
 			break;
-		case 'w': creature->actorPos = creature->actorPos->w;
+		case 'w':
+			if(creature->actorPos->w) {
+				creature->actorPos = creature->actorPos->w;
+				look(creature->actorPos);
+			}
+			else {
+				printMessageC("You can't go that way!", ANSI_RED);
+			}
 			break;
 		default : printMessage("There's nowhere to go");
 			break;
