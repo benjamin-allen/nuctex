@@ -25,3 +25,5 @@ typedef struct Item {
 typedef struct Inventory {
 	item[26];
 } Inventory;
+
+#endif /* NULLSRC_ITEMS_HEADER *?
