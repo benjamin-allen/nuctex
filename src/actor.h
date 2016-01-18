@@ -2,7 +2,7 @@
 | NuCTex	| actor.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 12 December, 2015
-| Changed	| 5 January, 2016
+| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Define actor struct
 \-----------------------------------------------------------------------------*/
@@ -10,6 +10,7 @@
 #define NULLSRC_ACTOR_HEADER
 
 #include "location.h"
+#include "items.h"
 // This declaration must be modified whenever any new monsters are added
 #define MAX_MONSTERS 2
 
@@ -21,6 +22,8 @@ typedef struct Actor {
 	int agility;
 	int intelligence;
 	int charisma;
+
+	Inventory inv;
 
 	/* The location pointer is used to store the reference to the location at
 	   which the actor resides */

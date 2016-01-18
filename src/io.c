@@ -2,7 +2,7 @@
 | NuCTex	| io.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 14 January, 2016
+| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement member functions of io.h
 \-----------------------------------------------------------------------------*/
@@ -109,6 +109,16 @@ void printDamage(int damage, char* creatureName) {
    Prints a players stats, given a series of integers */
 void printStats(int health) {
 	printf("| %s%i%s HP |\n", ANSI_GREEN, health, ANSI_RESET);
+}
+
+void printInventory(Inventory inv, char* owner) {
+	int i;
+	printf("%s's possessions:\n", owner);
+	for(i = 0; i < 26; i++) {
+		if(inv.item[i]) {
+			printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
+		}
+	}
 }
 
 /* getInput() ---

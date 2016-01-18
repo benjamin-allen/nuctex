@@ -2,12 +2,14 @@
 | NuCTex	| io.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 14 January, 2016
+| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Prototype declarations for the input functions
 \-----------------------------------------------------------------------------*/
 #ifndef NULLSRC_IO_HEADER
 #define NULLSRC_IO_HEADER
+
+#include "items.h"
 
 #define ANSI_RED		"\x1b[31m"
 #define ANSI_GREEN		"\x1b[32m"
@@ -27,6 +29,7 @@ void printMessageC(char*, char*);
 void printMonster(char*);
 void printDamage(int, char*);
 void printStats(int);
+void printInventory(Inventory);
 
 // Parser Functions
 void parseInput(char*);

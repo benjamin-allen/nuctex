@@ -2,7 +2,7 @@
 | NuCTex	| actor.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 12 December, 2015
-| Changed	| 5 January, 2016
+| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement actors
 \-----------------------------------------------------------------------------*/
@@ -19,7 +19,9 @@ Actor player = {
 	.intelligence=10,
 	.charisma=10,
 
-	.actorPos=&nw
+	.actorPos=&nw,
+
+	.inv.item[0] = &sword
 };
 
 /* This array of monsters contains all of the monsters in the game. MAX_MONSTERS
@@ -33,7 +35,9 @@ Actor monster[MAX_MONSTERS] = {
 		.intelligence=3,
 		.charisma=2,
 
-		.actorPos=&ne
+		.actorPos=&ne,
+
+		.inv.item[0] = &item_null
 	},
 	{
 		.name="Slime",
@@ -43,6 +47,8 @@ Actor monster[MAX_MONSTERS] = {
 		.intelligence=5,
 		.charisma=5,
 
-		.actorPos=&se
+		.actorPos=&se,
+
+		.inv.item[0] = &item_null
 	}
 };

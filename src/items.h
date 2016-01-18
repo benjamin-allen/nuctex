@@ -2,7 +2,7 @@
 | NuCTex	| items.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 17 January, 2016
-| Changed	| 17 January, 2016
+| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declare item structures used in the code
 \-----------------------------------------------------------------------------*/
@@ -23,7 +23,10 @@ typedef struct Item {
 } Item;
 
 typedef struct Inventory {
-	item[26];
+	Item* item[26];
 } Inventory;
 
-#endif /* NULLSRC_ITEMS_HEADER *?
+Item item_null;
+Item sword;
+
+#endif /* NULLSRC_ITEMS_HEADER */

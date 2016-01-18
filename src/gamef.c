@@ -2,13 +2,14 @@
 | NuCTex	| gamef.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 13 January, 2016
+| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Impementation of game functions.
 \-----------------------------------------------------------------------------*/
 
 #include "io.h"
 #include "combat.h"
+#include "items.h"
 
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
@@ -131,6 +132,10 @@ void callCommand(char* verb, char* noun) {
 		else if(checkOne(noun, "me") == 0) {
 			printStats(player.health);
 		}
+	}
+
+	else if(checkTwo(verb, "items", "inventory") == 0) {
+		printInventory(player.inv, player.name);
 	}
 
 	// parsing for the go command
