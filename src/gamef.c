@@ -164,6 +164,9 @@ void callCommand(char* verb, char* noun) {
 		else if(checkOne(noun, "me") == 0) {
 			printStats(player.health);
 		}
+		else if(checkOne(noun, "items") == 0) {
+			printInventory(player.actorPos->inv, 0);
+		}
 	}
 
 	else if(checkTwo(verb, "items", "inventory") == 0) {

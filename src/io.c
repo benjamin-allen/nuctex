@@ -113,10 +113,20 @@ void printStats(int health) {
 
 void printInventory(Inventory inv, char* owner) {
 	int i;
-	printf("%s's possessions:\n", owner);
-	for(i = 0; i < 26; i++) {
-		if(inv.item[i]) {
-			printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
+	if(owner) {
+		printf("%s's possessions:\n", owner);
+		for(i = 0; i < 26; i++) {
+			if(inv.item[i]) {
+				printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
+			}
+		}
+	}
+	else {
+		printf("You scan the room for items...\n");
+		for(i = 0; i < 26; i++) {
+			if(inv.item[i]) {
+				printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
+			}
 		}
 	}
 }
