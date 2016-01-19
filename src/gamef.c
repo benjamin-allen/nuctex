@@ -130,6 +130,22 @@ void drop(char* itemName, Actor* actor) {
 	}
 }
 
+void pickUp(char* itemName, Actor* actor) {
+	int i;
+	for(i = 0; i < 26; i++) {
+		if(actor->actorPos->inv.item[i]) {
+			if(checkOne(actor->actorPos->inv.item[i]->name, itemName) == 0) {
+				int j = 0;
+				while(actor->inv.item[j]) {
+					j++;
+				}
+				actor->inv.item[j] = actor->actorPos->inv.item[i];
+				actor->actorPos->inv.item[i] = 0;
+			}
+		}
+	}
+}
+
 /* callCommand(char*, char*) ---
    Run a series of string comparisons on verb and noun to determine the proper
    function to call. Should be called after parsing user input into a verb and
@@ -186,6 +202,10 @@ void callCommand(char* verb, char* noun) {
 
 	else if(checkOne(verb, "drop") == 0) {
 		drop(noun, &player);
+	}
+	
+	else if(checkOne(verb, "get") == 0) {
+		pickUp(noun, &player);
 	}
 
 	// parsing for the kill command
