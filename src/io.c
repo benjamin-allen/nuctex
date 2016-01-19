@@ -121,6 +121,15 @@ void printInventory(Inventory inv, char* owner) {
 	}
 }
 
+void describeItem(Item* item) {
+	printf("%s%s - %s%s%s\n",
+	       ANSI_CYAN, item->name, ANSI_YELLOW, item->description, ANSI_RESET);
+	if(item->strength != 0) printf("Strength: %i\n", item->strength);
+	if(item->agility != 0) printf("Agility: %i\n", item->agility);
+	if(item->intelligence != 0) printf("Intelligence: %i\n", item->intelligence);
+	if(item->charisma != 0) printf("Charisma: %i\n", item->charisma);
+}
+
 /* getInput() ---
 capture input from the command line. As a nice touch, waits for the user. */
 char* getInput() {

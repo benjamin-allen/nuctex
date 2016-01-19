@@ -138,6 +138,17 @@ void callCommand(char* verb, char* noun) {
 		printInventory(player.inv, player.name);
 	}
 
+	else if(checkOne(verb, "describe") == 0) {
+		int i;
+		for(i = 0; i < 26; i++) {
+			if(player.inv.item[i]) {
+				if(checkOne(noun, player.inv.item[i]->name) == 0) {
+					describeItem(player.inv.item[i]);
+				}
+			}
+		}
+	}
+
 	// parsing for the go command
 	else if(checkOne(verb, "go") == 0) {
 		if(checkTwo(noun, "north", "n") == 0) {

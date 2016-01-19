@@ -29,7 +29,8 @@ void printMessageC(char*, char*);
 void printMonster(char*);
 void printDamage(int, char*);
 void printStats(int);
-void printInventory(Inventory);
+void printInventory(Inventory, char*);
+void describeItem(Item*);
 
 // Parser Functions
 void parseInput(char*);
