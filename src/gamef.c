@@ -145,7 +145,7 @@ void move(Actor* creature, char nsew) {
 
 void drop(char* itemName, Actor* actor) {
 	int i;
-	for(i = 0; i < 26; i++) {
+	for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
 		if(actor->inv.item[i]) {
 			if(checkOne(actor->inv.item[i]->name, itemName) == 0) {
 				int j = 0;
@@ -161,7 +161,7 @@ void drop(char* itemName, Actor* actor) {
 
 void pickUp(char* itemName, Actor* actor) {
 	int i;
-	for(i = 0; i < 26; i++) {
+	for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
 		if(actor->actorPos->inv.item[i]) {
 			if(checkOne(actor->actorPos->inv.item[i]->name, itemName) == 0) {
 				int j = 0;
@@ -204,7 +204,7 @@ void callCommand(char* verb, char* noun) {
 
 	else if(checkOne(verb, "describe") == 0) {
 		int i;
-		for(i = 0; i < 26; i++) {
+		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
 			if(player.inv.item[i]) {
 				if(checkOne(noun, player.inv.item[i]->name) == 0) {
 					describeItem(player.inv.item[i]);

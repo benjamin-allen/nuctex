@@ -114,7 +114,7 @@ void printInventory(Inventory inv, char* owner) {
 	int i;
 	if(owner) {
 		printf("%s's possessions:\n", owner);
-		for(i = 0; i < 26; i++) {
+		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
 			if(inv.item[i]) {
 				printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
 			}
@@ -122,7 +122,7 @@ void printInventory(Inventory inv, char* owner) {
 	}
 	else {
 		printf("You scan the room for items...\n");
-		for(i = 0; i < 26; i++) {
+		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
 			if(inv.item[i]) {
 				printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
 			}
