@@ -114,6 +114,22 @@ void move(Actor* creature, char nsew) {
 	}
 }
 
+void drop(char* itemName, Actor* actor) {
+	int i;
+	for(i = 0; i < 26; i++) {
+		if(actor->inv.item[i]) {
+			if(checkOne(actor->inv.item[i]->name, itemName) == 0) {
+				int j = 0;
+				while(actor->actorPos->inv.item[j]) {
+					j++;
+				}
+				actor->actorPos->inv.item[j] = actor->inv.item[i];
+				actor->inv.item[i] = 0;
+			}
+		}
+	}
+}
+
 /* callCommand(char*, char*) ---
    Run a series of string comparisons on verb and noun to determine the proper
    function to call. Should be called after parsing user input into a verb and
@@ -166,6 +182,10 @@ void callCommand(char* verb, char* noun) {
 		else {
 			printMessage("You can't go that way!");
 		}
+	}
+
+	else if(checkOne(verb, "drop") == 0) {
+		drop(noun, &player);
 	}
 
 	// parsing for the kill command
