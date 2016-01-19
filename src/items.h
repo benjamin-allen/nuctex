@@ -10,7 +10,7 @@
 #define NULLSRC_ITEMS_HEADER
 
 #define MAX_INVENTORY_AMOUNT 20
-#define MAX_EQUIPMENT_AMOUNT 5
+#define MAX_CLOTHING_AMOUNT 5
 
 typedef struct Item {
 	char* name;
@@ -30,7 +30,9 @@ typedef struct Inventory {
 } Inventory;
 
 typedef struct Equipment {
-	Item* item[MAX_EQUIPMENT_AMOUNT];
+	Item* weapon;
+	Item* clothing[MAX_CLOTHING_AMOUNT];
+	Item* accessory;
 } Equipment;
 
 Item item_null;
