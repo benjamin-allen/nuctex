@@ -2,7 +2,6 @@
 | NuCTex	| actor.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 12 December, 2015
-| Changed	| 5 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implement actors
 \-----------------------------------------------------------------------------*/

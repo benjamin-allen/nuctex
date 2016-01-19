@@ -2,7 +2,6 @@
 | NuCTex	| math.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 30 December, 2015
-| Changed	| 7 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declaration of mathematics functions used in the game
 \-----------------------------------------------------------------------------*/

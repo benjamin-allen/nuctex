@@ -2,7 +2,6 @@
 | NuCTex	| combat.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 29 December, 2015
-| Changed	| 5 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declaration of combat systems
 \-----------------------------------------------------------------------------*/

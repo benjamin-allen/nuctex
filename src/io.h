@@ -2,7 +2,6 @@
 | NuCTex	| io.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 14 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Prototype declarations for the input functions
 \-----------------------------------------------------------------------------*/

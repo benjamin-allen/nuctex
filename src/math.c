@@ -2,7 +2,6 @@
 | NuCTex	| math.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 30 December, 2015
-| Changed	| 7 January, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Implementation of various mathematical functions used in the game
 \-----------------------------------------------------------------------------*/
