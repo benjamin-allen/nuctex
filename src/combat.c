@@ -2,7 +2,6 @@
 | NuCTex	| combat.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 29 December, 2015
-| Changed	| 7 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Implementation of combat systems. Menu selection for which
 |			| creature will be fought is implemented in gamef.c

@@ -2,7 +2,6 @@
 | NuCTex	| actor.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 12 December, 2015
-| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Define actor struct
 \-----------------------------------------------------------------------------*/

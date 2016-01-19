@@ -2,7 +2,6 @@
 | NuCTex	| main.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 22 November, 2015
-| Changed	| 13 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Initialize main game loop. Doesn't do much yet.
 \-----------------------------------------------------------------------------*/

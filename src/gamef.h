@@ -2,7 +2,6 @@
 | NuCTex	| gamef.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 24 November, 2015
-| Changed	| 7 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Prototype declarations for functions used in the game
 \-----------------------------------------------------------------------------*/
