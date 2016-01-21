@@ -20,4 +20,6 @@ Item sword = {
 	.agility = -1,
 	.intelligence = 0,
 	.charisma = 0,
+
+	.defense = 100
 };

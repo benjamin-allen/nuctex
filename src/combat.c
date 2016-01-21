@@ -118,6 +118,10 @@ void attack(Actor* attacker, Actor* defender, int isPlayerAttacking) {
 	else {
 		damage = calcDamage(attacker->strength + attacker->eqp.weapon->strength);
 	}
+	damage -= getAggregateDefense(defender->eqp);
+	if(damage < 0) {
+		damage = 0;
+	}
 	defender->health -= damage;
 	if(isPlayerAttacking == 1) {
 		printDamage(damage, defender->name);

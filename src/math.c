@@ -77,3 +77,20 @@ int runAway(int escapingAgility, int chasingAgility) {
 		return 0;
 	}
 }
+
+int getAggregateDefense(Equipment eqp) {
+	int sumDefense = 0;
+	int i;
+	if(eqp.weapon) {
+		sumDefense += eqp.weapon->defense;
+	}
+	for(i = 0; i < MAX_CLOTHING_AMOUNT; i++) {
+		if(eqp.clothing[i]) {
+			sumDefense += eqp.clothing[i]->defense;
+		}
+	}
+	if(eqp.accessory) {
+		sumDefense += eqp.accessory->defense;
+	}
+	return sumDefense;
+}

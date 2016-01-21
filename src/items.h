@@ -23,6 +23,8 @@ typedef struct Item {
 	int agility;
 	int intelligence;
 	int charisma;
+
+	int defense;
 } Item;
 
 typedef struct Inventory {
