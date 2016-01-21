@@ -111,7 +111,13 @@ void monsterAct(int number, Actor* player, Actor* creature) {
    Call a damage calculation given two actor's stats. The int should only be 1
    when the player is attacking */
 void attack(Actor* attacker, Actor* defender, int isPlayerAttacking) {
-	int damage = calcDamage(attacker->strength);
+	int damage;
+	if(!attacker->eqp.weapon) {
+		damage = calcDamage(attacker->strength);
+	}
+	else {
+		damage = calcDamage(attacker->strength + attacker->eqp.weapon->strength);
+	}
 	defender->health -= damage;
 	if(isPlayerAttacking == 1) {
 		printDamage(damage, defender->name);
