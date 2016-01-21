@@ -130,6 +130,24 @@ void printInventory(Inventory inv, char* owner) {
 	}
 }
 
+void printEquipment(Equipment eqp, char* owner) {
+	int i;
+	if(owner) {
+		printf("%s's equipment:\n", owner);
+		if(eqp.weapon) {
+			printf("%s%s%s\n", ANSI_CYAN, eqp.weapon->name, ANSI_RESET);
+		}
+		for(i = 0; i < MAX_CLOTHING_AMOUNT; i++) {
+			if(eqp.clothing[i]) {
+				printf("%s%s%s\n", ANSI_CYAN, eqp.clothing[i]->name, ANSI_RESET);
+			}
+		}
+		if(eqp.accessory) {
+			printf("%s%s%s\n", ANSI_CYAN, eqp.accessory->name, ANSI_RESET);
+		}
+	}
+}
+
 void describeItem(Item* item) {
 	printf("%s%s - %s%s%s\n",
 	       ANSI_CYAN, item->name, ANSI_YELLOW, item->description, ANSI_RESET);

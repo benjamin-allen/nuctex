@@ -219,6 +219,7 @@ void callCommand(char* verb, char* noun) {
 
 	else if(checkTwo(verb, "items", "inventory") == 0) {
 		printInventory(player.inv, player.name);
+		printEquipment(player.eqp, player.name);
 	}
 
 	else if(checkOne(verb, "describe") == 0) {
