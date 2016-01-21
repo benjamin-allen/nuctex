@@ -9,6 +9,7 @@
 
 #include "items.h"
 
+/* The sword is our go-to testing item for the most basic systems */
 Item sword = {
 	.name = "sword",
 	.description = "A short, sturdy blade, favored for it's ease-of-use and versatility",

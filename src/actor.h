@@ -22,11 +22,14 @@ typedef struct Actor {
 	int intelligence;
 	int charisma;
 
+	/* The inventory and equipment structures provide a convenient way to access
+	   individual items whilst being sure that they are accessible to a
+	   player */
 	Inventory inv;
 	Equipment eqp;
 
 	/* The location pointer is used to store the reference to the location at
-	   which the actor resides */
+	   which the actor resides. It's useful for several functions */
 	Location* actorPos;
 }Actor;
 

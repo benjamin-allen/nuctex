@@ -110,16 +110,26 @@ void printStats(int health) {
 	printf("| %s%i%s HP |\n", ANSI_GREEN, health, ANSI_RESET);
 }
 
+/* printInventory(Inventory, char*) ---
+   Prints a given inventory, and it's owner */
 void printInventory(Inventory inv, char* owner) {
 	int i;
+	/* If the name of the inventory's owner is known and passed */
 	if(owner) {
 		printf("%s's possessions:\n", owner);
+		/* This for loop iterates through until it hits the #define'd limit for
+		   the max number of items in an inventory, checking each element first
+		   for existance and then for its name if it does exist */
 		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
 			if(inv.item[i]) {
 				printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
 			}
 		}
 	}
+	/* If the name is not given, scan the inventory and assume it's a room. This
+	   requires that any such use of room-scanning have the room's inventory
+	   passed as an argument. This is usually done in the style of a call that
+	   looks like 'printInventory(player->actorPos->inv, 0)' */
 	else {
 		printf("You scan the room for items...\n");
 		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
@@ -130,8 +140,14 @@ void printInventory(Inventory inv, char* owner) {
 	}
 }
 
+/* printEquipment(Equipment, char*) ---
+   Given an actor's equipment and name, print out all elements of that actor's
+   equipment, if they exist */
 void printEquipment(Equipment eqp, char* owner) {
 	int i;
+	/* printEquipment uses the same style of check-print-iterate that
+	   printInventory does. The primary difference is that several independent
+	   if statements are called to check the different pointers of equipment */
 	if(owner) {
 		printf("%s's equipment:\n", owner);
 		if(eqp.weapon) {
@@ -148,9 +164,14 @@ void printEquipment(Equipment eqp, char* owner) {
 	}
 }
 
+/* describeItem(Item*) ---
+   When passed the pointer to an item, print out the corresponding information
+   that is associated with that item's definition */
 void describeItem(Item* item) {
+	// print the item's name and description
 	printf("%s%s - %s%s%s\n",
 	       ANSI_CYAN, item->name, ANSI_YELLOW, item->description, ANSI_RESET);
+	// print the item's various stat modifiers, if they exist
 	if(item->strength != 0) printf("Strength: %i\n", item->strength);
 	if(item->agility != 0) printf("Agility: %i\n", item->agility);
 	if(item->intelligence != 0) printf("Intelligence: %i\n", item->intelligence);

@@ -112,17 +112,25 @@ void monsterAct(int number, Actor* player, Actor* creature) {
    when the player is attacking */
 void attack(Actor* attacker, Actor* defender, int isPlayerAttacking) {
 	int damage;
+	/* If the attacker does not have a weapon, he only does damage based on his
+	   strength */
 	if(!attacker->eqp.weapon) {
 		damage = calcDamage(attacker->strength);
 	}
+	/* If the attacker has a weapon, the weapon's strength is added to his own
+	   during the calcDamage() call */
 	else {
 		damage = calcDamage(attacker->strength + attacker->eqp.weapon->strength);
 	}
+	// Subtract the defender's defense from the damage, if there is any
 	damage -= getAggregateDefense(defender->eqp);
+	// Zero out damage if it goes negative
 	if(damage < 0) {
 		damage = 0;
 	}
 	defender->health -= damage;
+	/* Print the attack message a certain way if the player is attacking, and
+	   another way if a monster is attacking */
 	if(isPlayerAttacking == 1) {
 		printDamage(damage, defender->name);
 	}
