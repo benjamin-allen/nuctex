@@ -175,6 +175,25 @@ void pickUp(char* itemName, Actor* actor) {
 	}
 }
 
+void wield(char* itemName, Actor* actor) {
+	int i;
+	for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
+		if(actor->inv.item[i]) {
+			if(checkOne(actor->inv.item[i]->name, itemName) == 0) {
+				if(!actor->eqp.weapon) {
+					actor->eqp.weapon = actor->inv.item[i];
+					actor->inv.item[i] = 0;
+				}
+				else {
+					Item* temp = actor->inv.item[i];
+					actor->inv.item[i] = actor->eqp.weapon;
+					actor->eqp.weapon = temp;
+				}
+			}
+		}
+	}
+}
+
 /* callCommand(char*, char*) ---
    Run a series of string comparisons on verb and noun to determine the proper
    function to call. Should be called after parsing user input into a verb and
@@ -238,6 +257,10 @@ void callCommand(char* verb, char* noun) {
 	
 	else if(checkOne(verb, "get") == 0) {
 		pickUp(noun, &player);
+	}
+
+	else if(checkOne(verb, "wield") == 0) {
+		wield(noun, &player);
 	}
 
 	// parsing for the kill command

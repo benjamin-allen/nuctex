@@ -16,5 +16,8 @@ int gameLoop();
 void quit();	// 'quit'
 void look(Location*);	// 'look'
 void move(Actor*, char);
+void drop(char*, Actor*);
+void pickUp(char*, Actor*);
+void wield(char*, Actor*);
 
 #endif /* NULLSRC_GAMEF_HEADER */

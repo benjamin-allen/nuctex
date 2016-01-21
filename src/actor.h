@@ -23,6 +23,7 @@ typedef struct Actor {
 	int charisma;
 
 	Inventory inv;
+	Equipment eqp;
 
 	/* The location pointer is used to store the reference to the location at
 	   which the actor resides */
