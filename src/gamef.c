@@ -12,6 +12,7 @@
 
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
+Actor* player = &AIndex.actor[0];
 
 /* gameLoop() ---
 main game loop. Add things as needed */
@@ -77,14 +78,14 @@ void look(Location* room) {
 		default  : printMessage("Invalid number of exits. Debugging required.");
 			break;
 	}
-	int i = 0;
+	int i = 1;
 	int isMonsterHere = 0;
 
 	// The following code calls a check against all monsers for their position
-	while(i < MAX_MONSTERS) {
-		if(monster[i].actorPos == player.actorPos &&
-			monster[i].actorPos == room) {
-			printMonster(monster[i].name);
+	while(i < ACTOR_INDEX_LIMIT) {
+		if(AIndex.actor[i].actorPos == player->actorPos &&
+			AIndex.actor[i].actorPos == room) {
+			printMonster(AIndex.actor[i].name);
 			isMonsterHere=1;
 		}
 		i++;
@@ -234,29 +235,29 @@ void callCommand(char* verb, char* noun) {
 	// Parsing for the look command
 	else if(checkOne(verb, "look") == 0) {
 		if(checkThree(noun, "!n", "around", "room") == 0) {
-			look(player.actorPos);
+			look(player->actorPos);
 		}
 		else if(checkOne(noun, "me") == 0) {
-			printStats(player.health);
+			printStats(player->health);
 		}
 		else if(checkOne(noun, "items") == 0) {
-			printInventory(player.actorPos->inv, 0);
+			printInventory(player->actorPos->inv, 0);
 		}
 	}
 
 	// Parsing for the items command
 	else if(checkTwo(verb, "items", "inventory") == 0) {
-		printInventory(player.inv, player.name);
-		printEquipment(player.eqp, player.name);
+		printInventory(player->inv, player->name);
+		printEquipment(player->eqp, player->name);
 	}
 
 	// Parsing for the describe command
 	else if(checkOne(verb, "describe") == 0) {
 		int i;
 		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
-			if(player.inv.item[i]) {
-				if(checkOne(noun, player.inv.item[i]->name) == 0) {
-					describeItem(player.inv.item[i]);
+			if(player->inv.item[i]) {
+				if(checkOne(noun, player->inv.item[i]->name) == 0) {
+					describeItem(player->inv.item[i]);
 				}
 			}
 		}
@@ -265,16 +266,16 @@ void callCommand(char* verb, char* noun) {
 	// Parsing for the go command
 	else if(checkOne(verb, "go") == 0) {
 		if(checkTwo(noun, "north", "n") == 0) {
-			move(&player, 'n');
+			move(player, 'n');
 		}
 		else if(checkTwo(noun, "south", "s") == 0) {
-			move(&player, 's');
+			move(player, 's');
 		}
 		else if(checkTwo(noun, "east", "e") == 0) {
-			move(&player, 'e');
+			move(player, 'e');
 		}
 		else if(checkTwo(noun, "west", "w") == 0) {
-			move(&player, 'w');
+			move(player, 'w');
 		}
 		else {
 			printMessage("You can't go that way!");
@@ -283,33 +284,35 @@ void callCommand(char* verb, char* noun) {
 
 	// Parsing for the drop command
 	else if(checkOne(verb, "drop") == 0) {
-		drop(noun, &player);
-		player.inv = sortInventory(player.inv);
+		drop(noun, player);
+		player->inv = sortInventory(player->inv);
 	}
 	
 	// Parsing for the get command
 	else if(checkOne(verb, "get") == 0) {
-		pickUp(noun, &player);
-		player.inv = sortInventory(player.inv);
+		pickUp(noun, player);
+		player->inv = sortInventory(player->inv);
 	}
 
 	// Parsing for the wield command
 	else if(checkOne(verb, "wield") == 0) {
-		wield(noun, &player);
-		player.inv = sortInventory(player.inv);
+		wield(noun, player);
+		player->inv = sortInventory(player->inv);
 	}
 
 	else if(checkOne(verb, "sort") == 0) {
-		player.inv = sortInventory(player.inv);
+		player->inv = sortInventory(player->inv);
 	}
 
 	// Parsing for the kill command
 	else if(checkOne(verb, "kill") == 0) {
 		int i = 0;
-		while(i < MAX_MONSTERS) {
-			if(checkOne(noun, monster[i].name) == 0) {
-				if(player.actorPos == monster[i].actorPos) {
-					game_isQuit = combat(&player, &monster[i]);
+		while(i < ACTOR_INDEX_LIMIT) {
+			if(AIndex.actor[i].name) {
+				if(checkOne(noun, AIndex.actor[i].name) == 0) {
+					if(player->actorPos == AIndex.actor[i].actorPos) {
+						game_isQuit = combat(player, &AIndex.actor[i]);
+					}
 				}
 			}
 			i++;
