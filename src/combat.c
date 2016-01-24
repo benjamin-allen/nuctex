@@ -121,7 +121,13 @@ void attack(Actor* attacker, Actor* defender, int isPlayerAttacking) {
 	   during the calcDamage() call */
 	else {
 		damage = calcDamage(attacker->strength + attacker->eqp.weapon->strength);
+		if(attacker->eqp.weapon->flags[0]) {
+			if(itemHasFlag(attacker->eqp.weapon, &sharp)) {
+				damage = damage * 10;
+			}
+		}
 	}
+
 	// Subtract the defender's defense from the damage, if there is any
 	damage -= getAggregateDefense(defender->eqp);
 	// Zero out damage if it goes negative

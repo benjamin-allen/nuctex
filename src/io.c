@@ -176,6 +176,8 @@ void describeItem(Item* item) {
 	if(item->agility != 0) printf("Agility: %i\n", item->agility);
 	if(item->intelligence != 0) printf("Intelligence: %i\n", item->intelligence);
 	if(item->charisma != 0) printf("Charisma: %i\n", item->charisma);
+
+	if(itemHasFlag(item, &sharp) == 1) printf("|-This item is very sharp-|\n");
 }
 
 /* getInput() ---

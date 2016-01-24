@@ -2,7 +2,6 @@
 | NuCTex	| items.c
 | Author	| Benjamin A - Nullsrc
 | Created	| 18 January, 2016
-| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Define example items
 \-----------------------------------------------------------------------------*/
@@ -39,6 +38,16 @@ Inventory sortInventory(Inventory inv) {
 	return temp;
 }
 
+int itemHasFlag(Item* toCheck, Flag* checkFor) {
+	int i;
+	for(i = 0; i < MAX_FLAG_AMOUNT; i++) {
+		if(toCheck->flags[i]->id == checkFor->id) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
 /* The sword is our go-to testing item for the most basic systems */
 Item sword = {
 	.name = "sword",
@@ -52,7 +61,9 @@ Item sword = {
 	.intelligence = 0,
 	.charisma = 0,
 
-	.defense = 1
+	.defense = 1,
+
+	.flags[0] = &sharp
 };
 
 Item box = {

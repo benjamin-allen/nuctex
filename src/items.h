@@ -2,12 +2,13 @@
 | NuCTex	| items.h
 | Author	| Benjamin A - Nullsrc
 | Created	| 17 January, 2016
-| Changed	| 18 January, 2016
 |-------------------------------------------------------------------------------
 | Overview	| Declare item structures used in the code
 \-----------------------------------------------------------------------------*/
 #ifndef NULLSRC_ITEMS_HEADER
 #define NULLSRC_ITEMS_HEADER
+
+#include "flags.h"
 
 #define MAX_INVENTORY_AMOUNT 20
 #define MAX_CLOTHING_AMOUNT 5
@@ -27,6 +28,8 @@ typedef struct Item {
 	int charisma;
 
 	int defense;
+
+	Flag* flags[MAX_FLAG_AMOUNT];
 } Item;
 
 /* Actors do not posess individual items, but they do posess the following
@@ -47,6 +50,7 @@ typedef struct Equipment {
 } Equipment;
 
 Inventory sortInventory(Inventory);
+int itemHasFlag(Item*, Flag*);
 
 Item item_null;
 Item sword;
