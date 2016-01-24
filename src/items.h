@@ -12,8 +12,7 @@
 
 #define MAX_INVENTORY_AMOUNT 20
 #define MAX_CLOTHING_AMOUNT 5
-
-
+#define ITEM_INDEX_LIMIT 100
 
 /* The item is our basic unit of object. It contians it's name, a description,
    and several other statistical units */
@@ -50,7 +49,7 @@ typedef struct Equipment {
 } Equipment;
 
 typedef struct I_index {
-	Item item[100];
+	Item item[ITEM_INDEX_LIMIT];
 } I_index;
 
 Inventory sortInventory(Inventory);

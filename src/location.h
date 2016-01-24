@@ -10,6 +10,7 @@
 
 #include "items.h"
 #define NOWHERE -1
+#define LOCATION_INDEX_LIMIT 100
 
 /* this is the main location structure.
 one location represents one map tile */
@@ -30,7 +31,7 @@ typedef struct Location {
 } Location;
 
 typedef struct L_index {
-	Location loc[100];
+	Location loc[LOCATION_INDEX_LIMIT];
 }L_index;
 
 L_index LIndex;
