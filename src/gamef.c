@@ -8,6 +8,7 @@
 
 #include "io.h"
 #include "combat.h"
+#include "items.h"
 
 int game_isQuit = 0;	/* file-wide game-quitting variable. This will not go
 						out of scope for the main game loop */
@@ -142,17 +143,95 @@ void move(Actor* creature, char nsew) {
 	}
 }
 
+/* drop(char*, Actor*) ---
+   Given the name of an item to search for, iterate through the item list and
+   identify an item of that name. If that item exists, drop it */
+void drop(char* itemName, Actor* actor) {
+	int i;
+	for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
+		// Only run comparisons on non-null memory values
+		if(actor->inv.item[i]) {
+			// If the item name matches the name given to drop()
+			if(checkOne(actor->inv.item[i]->name, itemName) == 0) {
+				/* Iterate through the location's inventory until a null pointer
+				   is found */
+				int j = 0;
+				while(actor->actorPos->inv.item[j]) {
+					j++;
+				}
+				// Set the location's null pointer to point to the item...
+				actor->actorPos->inv.item[j] = actor->inv.item[i];
+				// ...and set the inventory pointer that was taken from to null
+				actor->inv.item[i] = 0;
+			}
+		}
+	}
+}
+
+/* pickUp(char*, Actor*) ---
+   Given the name of an item to search for, iterate through the location's item
+   list and identify an item of that name. If that item exists, pick it up */
+void pickUp(char* itemName, Actor* actor) {
+	int i;
+	// See drop() for an explanation of the search process
+	for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
+		if(actor->actorPos->inv.item[i]) {
+			if(checkOne(actor->actorPos->inv.item[i]->name, itemName) == 0) {
+				int j = 0;
+				while(actor->inv.item[j]) {
+					j++;
+				}
+				// Set the actor's pointer to point to the item...
+				actor->inv.item[j] = actor->actorPos->inv.item[i];
+				// ...and set the location inventory's item to point to null
+				actor->actorPos->inv.item[i] = 0;
+			}
+		}
+	}
+}
+
+/* wield(char*, Actor*) ---
+   Given the name of an item to search for, iterate through the Actor's
+   inventory and identify an item of that name. If that item exists, equip it */
+void wield(char* itemName, Actor* actor) {
+	int i;
+	for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
+		if(actor->inv.item[i]) {
+			if(checkOne(actor->inv.item[i]->name, itemName) == 0) {
+				// If there is no weapon currently equipped
+				if(!actor->eqp.weapon) {
+					// Set the actor's weapon to point to the inventory item... 
+					actor->eqp.weapon = actor->inv.item[i];
+					// Set the inventory pointer that was taken from to null.
+					actor->inv.item[i] = 0;
+				}
+				// If there is a weapon currently equipped
+				else {
+					/* Create a temporary pointer to store the address of
+					   the inventory item */
+					Item* temp = actor->inv.item[i];
+					/* Set the inventory pointer to point the currently equipped
+					   weapon */
+					actor->inv.item[i] = actor->eqp.weapon;
+					// Set the weapon to the temporary pointer
+					actor->eqp.weapon = temp;
+				}
+			}
+		}
+	}
+}
+
 /* callCommand(char*, char*) ---
    Run a series of string comparisons on verb and noun to determine the proper
    function to call. Should be called after parsing user input into a verb and
    a noun */
 void callCommand(char* verb, char* noun) {
-	// quit is never called with a noun argument
+	// Quit is never called with a noun argument
 	if(checkOne(verb, "quit") == 0) {
 		quit();
 	}
 
-	// parsing for the look command
+	// Parsing for the look command
 	else if(checkOne(verb, "look") == 0) {
 		if(checkThree(noun, "!n", "around", "room") == 0) {
 			look(player.actorPos);
@@ -160,9 +239,30 @@ void callCommand(char* verb, char* noun) {
 		else if(checkOne(noun, "me") == 0) {
 			printStats(player.health);
 		}
+		else if(checkOne(noun, "items") == 0) {
+			printInventory(player.actorPos->inv, 0);
+		}
 	}
 
-	// parsing for the go command
+	// Parsing for the items command
+	else if(checkTwo(verb, "items", "inventory") == 0) {
+		printInventory(player.inv, player.name);
+		printEquipment(player.eqp, player.name);
+	}
+
+	// Parsing for the describe command
+	else if(checkOne(verb, "describe") == 0) {
+		int i;
+		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
+			if(player.inv.item[i]) {
+				if(checkOne(noun, player.inv.item[i]->name) == 0) {
+					describeItem(player.inv.item[i]);
+				}
+			}
+		}
+	}
+
+	// Parsing for the go command
 	else if(checkOne(verb, "go") == 0) {
 		if(checkTwo(noun, "north", "n") == 0) {
 			move(&player, 'n');
@@ -181,7 +281,25 @@ void callCommand(char* verb, char* noun) {
 		}
 	}
 
-	// parsing for the kill command
+	// Parsing for the drop command
+	else if(checkOne(verb, "drop") == 0) {
+		drop(noun, &player);
+		player.inv = sortInventory(player.inv);
+	}
+	
+	// Parsing for the get command
+	else if(checkOne(verb, "get") == 0) {
+		pickUp(noun, &player);
+		player.inv = sortInventory(player.inv);
+	}
+
+	// Parsing for the wield command
+	else if(checkOne(verb, "wield") == 0) {
+		wield(noun, &player);
+		player.inv = sortInventory(player.inv);
+	}
+
+	// Parsing for the kill command
 	else if(checkOne(verb, "kill") == 0) {
 		int i = 0;
 		while(i < MAX_MONSTERS) {
@@ -194,7 +312,7 @@ void callCommand(char* verb, char* noun) {
 		}
 	}
 
-	// default "no-match" response
+	// Default "no-match" response
 	else {
 		printMessage("Invalid input");
 	}

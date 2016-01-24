@@ -77,3 +77,27 @@ int runAway(int escapingAgility, int chasingAgility) {
 		return 0;
 	}
 }
+
+/* getAggregateDefense(Equipment) ---
+   If given a creature's equipment, calculate the total raw defense reduction
+   and return that integer */
+int getAggregateDefense(Equipment eqp) {
+	// sumDefense is the value that will be returned
+	int sumDefense = 0;
+	int i;
+	/* Each part of the equipment structure is first checked for existance and
+	   then checked for it's defense value */
+	if(eqp.weapon) {
+		sumDefense += eqp.weapon->defense;
+	}
+	for(i = 0; i < MAX_CLOTHING_AMOUNT; i++) {
+		if(eqp.clothing[i]) {
+			sumDefense += eqp.clothing[i]->defense;
+		}
+	}
+	if(eqp.accessory) {
+		sumDefense += eqp.accessory->defense;
+	}
+	/* Return the total defense to be used elsewhere */
+	return sumDefense;
+}

@@ -4,9 +4,13 @@
 | Created	| 22 November, 2015
 |-------------------------------------------------------------------------------
 | Overview	| Prototype declarations for the input functions
+|-------------------------------------------------------------------------------
+| CRITICAL	| Though callCommand() is declared here, it is defined in gamef.c
 \-----------------------------------------------------------------------------*/
 #ifndef NULLSRC_IO_HEADER
 #define NULLSRC_IO_HEADER
+
+#include "items.h"
 
 #define ANSI_RED		"\x1b[31m"
 #define ANSI_GREEN		"\x1b[32m"
@@ -26,6 +30,9 @@ void printMessageC(char*, char*);
 void printMonster(char*);
 void printDamage(int, char*);
 void printStats(int);
+void printInventory(Inventory, char*);
+void printEquipment(Equipment, char*);
+void describeItem(Item*);
 
 // Parser Functions
 void parseInput(char*);

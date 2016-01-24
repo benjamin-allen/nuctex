@@ -11,8 +11,10 @@
 #include "math.h"
 
 int main() {
+	// Initialize the pseudo-RNG
 	initRand();
-	printMessageC("Welcome to NuCTex 0.1b.1!", ANSI_YELLOW);
+	// Print the welcome message
+	printMessageC("Welcome to NuCTex 0.1c!", ANSI_YELLOW);
 	gameLoop();
 
 	return 0;

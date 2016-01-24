@@ -8,6 +8,8 @@
 #ifndef NULLSRC_LOCATION_HEADER
 #define NULLSRC_LOCATION_HEADER
 
+#include "items.h"
+
 /* this is the main location structure.
 one location represents one map tile */
 typedef struct Location {
@@ -21,6 +23,8 @@ typedef struct Location {
 	struct Location* s;
 	struct Location* e;
 	struct Location* w;
+
+	Inventory inv;
 } Location;
 
 // current game locations

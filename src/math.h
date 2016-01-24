@@ -8,6 +8,8 @@
 #ifndef NULLSRC_MATH_HEADER
 #define NULLSRC_MATH_HEADER
 
+#include "items.h"
+
 // RNG functions
 void initRand();
 int rng(int, int);
@@ -18,5 +20,6 @@ int crng(int, int);
 // Combat functions
 int calcDamage(int);
 int runAway(int, int);
+int getAggregateDefense(Equipment);
 
 #endif /* NULLSRC_MATH_HEADER */
