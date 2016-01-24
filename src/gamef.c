@@ -284,16 +284,19 @@ void callCommand(char* verb, char* noun) {
 	// Parsing for the drop command
 	else if(checkOne(verb, "drop") == 0) {
 		drop(noun, &player);
+		player.inv = sortInventory(player.inv);
 	}
 	
 	// Parsing for the get command
 	else if(checkOne(verb, "get") == 0) {
 		pickUp(noun, &player);
+		player.inv = sortInventory(player.inv);
 	}
 
 	// Parsing for the wield command
 	else if(checkOne(verb, "wield") == 0) {
 		wield(noun, &player);
+		player.inv = sortInventory(player.inv);
 	}
 
 	// Parsing for the kill command

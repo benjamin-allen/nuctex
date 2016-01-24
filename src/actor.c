@@ -20,7 +20,8 @@ Actor player = {
 
 	.actorPos=&nw,
 
-	.inv.item[0] = &sword
+	.inv.item[0] = &sword,
+	.inv.item[8] = &box
 };
 
 /* This array of monsters contains all of the monsters in the game. MAX_MONSTERS

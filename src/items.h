@@ -46,7 +46,10 @@ typedef struct Equipment {
 	Item* accessory;
 } Equipment;
 
+Inventory sortInventory(Inventory);
+
 Item item_null;
 Item sword;
+Item box;
 
 #endif /* NULLSRC_ITEMS_HEADER */

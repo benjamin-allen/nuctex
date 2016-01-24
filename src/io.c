@@ -122,7 +122,7 @@ void printInventory(Inventory inv, char* owner) {
 		   for existance and then for its name if it does exist */
 		for(i = 0; i < MAX_INVENTORY_AMOUNT; i++) {
 			if(inv.item[i]) {
-				printf("%s%s%s\n", ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
+				printf("%s%i - %s%s%s\n", ANSI_YELLOW, i, ANSI_CYAN, inv.item[i]->name, ANSI_RESET);
 			}
 		}
 	}
