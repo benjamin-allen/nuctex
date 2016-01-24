@@ -18,7 +18,7 @@ Actor player = {
 	.intelligence=10,
 	.charisma=10,
 
-	.actorPos=&nw,
+	.actorPos=&LIndex.loc[0],
 
 	.inv.item[0] = &IIndex.item[0],
 };
@@ -34,7 +34,7 @@ Actor monster[MAX_MONSTERS] = {
 		.intelligence=3,
 		.charisma=2,
 
-		.actorPos=&ne,
+		.actorPos=&LIndex.loc[0],
 	},
 	{
 		.name="Slime",
@@ -44,6 +44,6 @@ Actor monster[MAX_MONSTERS] = {
 		.intelligence=5,
 		.charisma=5,
 
-		.actorPos=&se,
+		.actorPos=&LIndex.loc[0],
 	}
 };

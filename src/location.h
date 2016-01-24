@@ -13,6 +13,7 @@
 /* this is the main location structure.
 one location represents one map tile */
 typedef struct Location {
+	int id;
 	char* description;		// A string description of the location
 
 	/* these are the location pointers. These will point to other locations that
@@ -27,14 +28,10 @@ typedef struct Location {
 	Inventory inv;
 } Location;
 
-// current game locations
-Location nw;
-Location ne;
-Location sw;
-Location se;
+typedef struct L_index {
+	Location loc[100];
+}L_index;
 
-
-// Game-critical locations
-Location dead;
+L_index LIndex;
 
 #endif /* NULLSRC_LOCATION_HEADER */
