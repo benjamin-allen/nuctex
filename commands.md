@@ -13,10 +13,11 @@ to see what is in the room, or, alternately, use `look room`. While looking at
 yourself, called with `look me`, won't do much yet, it's something you can do.
 
 ##Inventory
-To see the items that you have, use 'items' or 'inventory'. Both commands will
+To see the items that you have, use `items` or `inventory`. Both commands will
 print your inventory as well as your equipment. To see the items in the room,
-use 'look items'. The 'drop' and 'get' commands will drop items or pick them up,
-respectively. Call them with the name of the item you wish to pick up.
+use `look items`. The `drop` and `get` commands will drop items or pick them up,
+respectively. Call them with the name of the item you wish to pick up. To equip
+items, use the `equip` command
 
 ##Fighting
 You can fight a monster that is in the same location that you are in by typing
