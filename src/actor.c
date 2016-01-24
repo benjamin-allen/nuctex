@@ -20,8 +20,8 @@ Actor player = {
 
 	.actorPos=&nw,
 
-	.inv.item[0] = &sword,
-	.inv.item[8] = &box
+	.inv.item[0] = &IIndex.item[0],
+	.inv.item[5] = &IIndex.item[0]
 };
 
 /* This array of monsters contains all of the monsters in the game. MAX_MONSTERS
@@ -36,8 +36,6 @@ Actor monster[MAX_MONSTERS] = {
 		.charisma=2,
 
 		.actorPos=&ne,
-
-		.inv.item[0] = &item_null
 	},
 	{
 		.name="Slime",
@@ -48,7 +46,5 @@ Actor monster[MAX_MONSTERS] = {
 		.charisma=5,
 
 		.actorPos=&se,
-
-		.inv.item[0] = &item_null
 	}
 };

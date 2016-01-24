@@ -13,15 +13,15 @@
 #define MAX_INVENTORY_AMOUNT 20
 #define MAX_CLOTHING_AMOUNT 5
 
+
+
 /* The item is our basic unit of object. It contians it's name, a description,
    and several other statistical units */
 typedef struct Item {
 	char* name;
 	char* description;
 	int id;
-	float size;
-	float weight;
-
+	
 	int strength;
 	int agility;
 	int intelligence;
@@ -49,11 +49,13 @@ typedef struct Equipment {
 	Item* accessory;
 } Equipment;
 
+struct I_index {
+	Item item[100];
+};
+
 Inventory sortInventory(Inventory);
 int itemHasFlag(Item*, Flag*);
 
-Item item_null;
-Item sword;
-Item box;
+struct I_index IIndex;
 
 #endif /* NULLSRC_ITEMS_HEADER */

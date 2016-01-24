@@ -299,6 +299,10 @@ void callCommand(char* verb, char* noun) {
 		player.inv = sortInventory(player.inv);
 	}
 
+	else if(checkOne(verb, "sort") == 0) {
+		player.inv = sortInventory(player.inv);
+	}
+
 	// Parsing for the kill command
 	else if(checkOne(verb, "kill") == 0) {
 		int i = 0;
