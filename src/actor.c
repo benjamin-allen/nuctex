@@ -21,7 +21,6 @@ Actor player = {
 	.actorPos=&nw,
 
 	.inv.item[0] = &IIndex.item[0],
-	.inv.item[5] = &IIndex.item[0]
 };
 
 /* This array of monsters contains all of the monsters in the game. MAX_MONSTERS

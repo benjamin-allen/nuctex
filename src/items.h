@@ -49,9 +49,9 @@ typedef struct Equipment {
 	Item* accessory;
 } Equipment;
 
-struct I_index {
+typedef struct I_index {
 	Item item[100];
-};
+} I_index;
 
 Inventory sortInventory(Inventory);
 int itemHasFlag(Item*, Flag*);

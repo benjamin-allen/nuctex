@@ -7,6 +7,7 @@
 \-----------------------------------------------------------------------------*/
 
 #include "items.h"
+#include <stdio.h>
 
 /* sortInventory(Inventory) ---
    Passed an inventory, will reorder its elements so that the first available
@@ -48,6 +49,9 @@ int itemHasFlag(Item* toCheck, Flag* checkFor) {
 	return 0;
 }
 
-struct I_index IIndex = {
+
+
+
+I_index IIndex = {
 	.item[0] = {.name="sword", .description="a sword", .id=0, .strength=5, .agility=-1, .intelligence=0, .charisma=0, .defense=2}
 };
