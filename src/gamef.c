@@ -41,16 +41,16 @@ void look(Location* room) {
 	printMessage(room->description);
 	/* the following chunk of if statments increment the exit integer to act as
 	a bitwise number for the purposes of printing exits */
-	if(room->n != 0) {
+	if(room->n != NOWHERE) {
 		exits = exits + 1;
 	}
-	if(room->s !=0) {
+	if(room->s != NOWHERE) {
 		exits = exits + 2;
 	}
-	if(room->e != 0) {
+	if(room->e != 0 NOWHERE) {
 		exits = exits + 4;
 	}
-	if(room->w != 0) {
+	if(room->w != 0 NOWHERE) {
 		exits = exits + 8;
 	}
 
@@ -103,8 +103,8 @@ void move(Actor* creature, char nsew) {
 		case 'n':
 			/* Conditional check for whether there's actually something at the
 			   desired location. Only passes if there is */
-			if(creature->actorPos->n) {
-				creature->actorPos = creature->actorPos->n; 
+			if(creature->actorPos->n != NOWHERE) {
+				creature->actorPos = &LIndex.loc[creature->actorPos->n]; 
 				look(creature->actorPos);
 			}
 			else {
@@ -112,8 +112,8 @@ void move(Actor* creature, char nsew) {
 			}
 			break;
 		case 's':
-			if(creature->actorPos->s) {
-				creature->actorPos = creature->actorPos->s; 
+			if(creature->actorPos->s != NOWHERE) {
+				creature->actorPos = &LIndex.loc[creature->actorPos->s];
 				look(creature->actorPos);
 			}
 			else {
@@ -121,8 +121,8 @@ void move(Actor* creature, char nsew) {
 			}
 			break;
 		case 'e':
-			if(creature->actorPos->e) {
-				creature->actorPos = creature->actorPos->e;
+			if(creature->actorPos->e != NOWHERE) {
+				creature->actorPos = &LIndex.loc[creature->actorPos->e];
 				look(creature->actorPos);
 			}
 			else {
@@ -130,8 +130,8 @@ void move(Actor* creature, char nsew) {
 			}
 			break;
 		case 'w':
-			if(creature->actorPos->w) {
-				creature->actorPos = creature->actorPos->w;
+			if(creature->actorPos->w != NOWHERE) {
+				creature->actorPos = &LIndex.loc[creature->actorPos->w];
 				look(creature->actorPos);
 			}
 			else {

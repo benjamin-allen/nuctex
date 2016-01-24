@@ -9,6 +9,7 @@
 #define NULLSRC_LOCATION_HEADER
 
 #include "items.h"
+#define NOWHERE -1
 
 /* this is the main location structure.
 one location represents one map tile */
@@ -20,10 +21,10 @@ typedef struct Location {
 	this location connects to. Set to a location that has been declared, and
 	make sure that it makes sense. To create a "wall," set the pointer to 0
 	in the initialization (location.c) */
-	struct Location* n;
-	struct Location* s;
-	struct Location* e;
-	struct Location* w;
+	int n;
+	int s;
+	int e;
+	int w;
 
 	Inventory inv;
 } Location;

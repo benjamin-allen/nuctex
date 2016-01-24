@@ -10,5 +10,6 @@
 #include "location.h"
 
 L_index LIndex = {
-	.loc[0] = {.id=0, .description="If you can see this room, it is a bug.", .n=0, .s=0, .e=0, .w=0}
+	.loc[0] = {.id=0, .description="If you can see this room, it is a bug.", .n=1, .s=NOWHERE, .e=NOWHERE, .w=NOWHERE},
+	.loc[1] = {.id=1, .description="This is another room.", .n=NOWHERE, .s=0, .e=NOWHERE, .w=NOWHERE}
 };
