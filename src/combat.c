@@ -65,7 +65,7 @@ int combat(Actor* player, Actor* creature) {
 		printMessage("You slay the monster.");
 
 		// Move the creature to the location reserved for dead things
-		creature->actorPos = &dead;
+		creature->actorPos = &LIndex.loc[0];
 		return 0;
 	}
 	else {

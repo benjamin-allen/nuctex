@@ -10,8 +10,7 @@
 
 #include "location.h"
 #include "items.h"
-// This declaration must be modified whenever any new monsters are added
-#define MAX_MONSTERS 2
+#define ACTOR_INDEX_LIMIT 100 
 
 typedef struct Actor {
 	// name stores the string by which the actor is known to the engine
@@ -33,8 +32,10 @@ typedef struct Actor {
 	Location* actorPos;
 }Actor;
 
-// Declaration of the actors used in the engine
-Actor player;
-Actor monster[MAX_MONSTERS];
+typedef struct A_index {
+	Actor actor[ACTOR_INDEX_LIMIT];
+}A_index;
+
+A_index AIndex;
 
 #endif /* NULLSRC_ACTOR_HEADER */

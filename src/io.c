@@ -233,6 +233,9 @@ void parseInput(char* input) {
    used in the place of multiple strcmp operations as a space and time-saving
    operation */
 int checkOne(char* toCheck, char* match) {
+	if(!match) {
+		return -1;
+	}
 	if(strcmp(toCheck, match) == 0) {
 		return 0;
 	}
@@ -242,6 +245,9 @@ int checkOne(char* toCheck, char* match) {
 }
 
 int checkTwo(char* toCheck, char* match, char* matchTwo) {
+	if(!match) {
+		return -1;
+	}
 	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0) {
 		return 0;
 	}
@@ -251,6 +257,9 @@ int checkTwo(char* toCheck, char* match, char* matchTwo) {
 }
 
 int checkThree(char* toCheck, char* match, char* matchTwo, char* matchThree) {
+	if(!match) {
+		return -1;
+	}
 	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0 ||
 	   strcmp(toCheck, matchThree) == 0) {
 		return 0;
@@ -262,6 +271,9 @@ int checkThree(char* toCheck, char* match, char* matchTwo, char* matchThree) {
 
 int checkFour(char* toCheck, char* match, char* matchTwo, char* matchThree,
           char* matchFour) {
+	if(!match) {
+		return -1;
+	}
 	if(strcmp(toCheck, match) ==0 || strcmp(toCheck, matchTwo) == 0 ||
 	   strcmp(toCheck, matchThree) == 0 || strcmp(toCheck, matchFour) == 0) {
 		return 0;

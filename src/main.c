@@ -14,7 +14,7 @@ int main() {
 	// Initialize the pseudo-RNG
 	initRand();
 	// Print the welcome message
-	printMessageC("Welcome to NuCTex 0.1c!", ANSI_YELLOW);
+	printMessageC("Welcome to NuCTex 0.1d!", ANSI_YELLOW);
 	gameLoop();
 
 	return 0;

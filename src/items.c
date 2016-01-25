@@ -7,6 +7,7 @@
 \-----------------------------------------------------------------------------*/
 
 #include "items.h"
+#include <stdio.h>
 
 /* sortInventory(Inventory) ---
    Passed an inventory, will reorder its elements so that the first available
@@ -48,35 +49,9 @@ int itemHasFlag(Item* toCheck, Flag* checkFor) {
 	return 0;
 }
 
-/* The sword is our go-to testing item for the most basic systems */
-Item sword = {
-	.name = "sword",
-	.description = "A short, sturdy blade, which is favored for its ease-of-use and versatility",
-	.id = 1,
-	.size = 1.0,
-	.weight = 1.0,
 
-	.strength = 5,
-	.agility = -1,
-	.intelligence = 0,
-	.charisma = 0,
 
-	.defense = 1,
 
-	.flags[0] = &sharp
-};
-
-Item box = {
-	.name = "box",
-	.description = "A large box. Who knows what it holds inside?",
-	.id = 2,
-	.size = 4.0,
-	.weight = 12.0,
-
-	.strength = 0,
-	.agility = -5,
-	.intelligence = 0,
-	.charisma = 0,
-
-	.defense = 12
+I_index IIndex = {
+	.item[0] = {.name="sword", .description="a sword", .id=0, .strength=5, .agility=-1, .intelligence=0, .charisma=0, .defense=2}
 };
