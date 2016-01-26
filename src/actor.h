@@ -21,6 +21,9 @@ typedef struct Actor {
 	int intelligence;
 	int charisma;
 
+	int isNPC;
+	char* talkText;
+
 	/* The inventory and equipment structures provide a convenient way to access
 	   individual items whilst being sure that they are accessible to a
 	   player */
