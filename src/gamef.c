@@ -97,18 +97,11 @@ void look(Location* room) {
 }
 
 void speak(char* name) {
-	int i = 0;
-	while(i < ACTOR_INDEX_LIMIT) {
-		if(AIndex.actor[i].actorPos == player->actorPos) {
-			if(AIndex.actor[i].name) {
-				if(checkOne(AIndex.actor[i].name, name) == 0) {
-					if(AIndex.actor[i].isNPC == 1) {
-						printMessageC(AIndex.actor[i].talkText, ANSI_YELLOW);
-					}
-				}
-			}
+	int id = getActorID(name, AIndex);
+	if(id < ACTOR_INDEX_LIMIT && id != -1) {
+		if(AIndex.actor[id].talkText) {
+			printMessageC(AIndex.actor[id].talkText, ANSI_YELLOW);
 		}
-		i++;
 	}
 }
 
