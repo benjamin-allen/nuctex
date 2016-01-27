@@ -9,6 +9,23 @@
 \-----------------------------------------------------------------------------*/
 #include "location.h"
 
+int getLocID(char* name, L_index index) {
+	int i;
+	for(i = 0; i < LOCATION_INDEX_LIMIT; i++) {
+		if(index.loc[i].name) {
+			if(checkOne(name, index.loc[i].name) == 0) {
+				if(index.loc[i].id == i) {
+					return i;
+				}
+				else {
+					printMessage("ID expected not equivalent to locations's index position");
+					return -1;
+				}
+			}
+		}
+	}
+}
+
 L_index LIndex = {
 	.loc[0] = {.id=0, .description="If you can see this room, it is a bug.", .n=1, .s=NOWHERE, .e=NOWHERE, .w=NOWHERE},
 	.loc[1] = {.id=1, .description="This is another room.", .n=NOWHERE, .s=0, .e=NOWHERE, .w=NOWHERE}

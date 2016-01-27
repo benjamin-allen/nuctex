@@ -49,8 +49,22 @@ int itemHasFlag(Item* toCheck, Flag* checkFor) {
 	return 0;
 }
 
-
-
+int getItemID(char* name, I_index index) {
+	int i;
+	for(i = 0; i < ITEM_INDEX_LIMIT; i++) {
+		if(index.item[i].name) {
+			if(checkOne(name, index.item[i].name) == 0) {
+				if(index.item[i].id == i) {
+					return i;
+				}
+				else {
+					printMessage("ID expected not equivalent to items's index position");
+					return -1;
+				}
+			}
+		}
+	}
+}
 
 I_index IIndex = {
 	.item[0] = {.name="sword", .description="a sword", .id=0, .strength=5, .agility=-1, .intelligence=0, .charisma=0, .defense=2}
