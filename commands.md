@@ -27,7 +27,11 @@ kill, you can learn the names of the monsters in the available area with the
 
 Once in combat, you can either attack the monster or try to flee. Both are
 dependent on your stats. You can also rest, but the action does nothing at
-present and exists for debugging purposes
+present and exists for debugging purposes.
+
+##NPC Interaction
+To speak with an NPC (right now only implemented as them spitting out some text
+at your), use the `talk` command.
 
 ##System
 `quit` is the command issued to quit the game cleanly.
