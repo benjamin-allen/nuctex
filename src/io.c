@@ -228,6 +228,30 @@ void parseInput(char* input) {
 	callCommand(v, n);
 }
 
+void logError(char* errdesc, const char* caller) {
+	FILE *file = fopen("./dat/debug.log", "a");
+	if(!file) {
+		printf("ERROR: Could not open dat/debug.log in append mode");
+	}
+	else {
+		fprintf(file, "ERROR: %s\n", errdesc);
+		fprintf(file, "In function %s\n", caller);
+		fprintf(file, "\n---\n");
+		fclose(file);
+	}
+}
+
+void logStart() {
+	FILE *file = fopen("./dat/events.log", "a");
+	if(!file) {
+		logError("Could not open dat/events.log", __PRETTY_FUNCTION__);
+	}
+	else {
+		fprintf(file, "NuCTex started\n");
+		fprintf(file, "\n---\n");
+	}
+}
+
 /* checkOne/Two/Three/Four(char*, ...) ---
    The check functions are a wrapper for strcmp systems, and are meant to be
    used in the place of multiple strcmp operations as a space and time-saving
