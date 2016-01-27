@@ -16,6 +16,7 @@
 one location represents one map tile */
 typedef struct Location {
 	int id;
+	char* name;
 	char* description;		// A string description of the location
 
 	/* these are the location pointers. These will point to other locations that

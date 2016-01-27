@@ -27,6 +27,6 @@ int getLocID(char* name, L_index index) {
 }
 
 L_index LIndex = {
-	.loc[0] = {.id=0, .description="If you can see this room, it is a bug.", .n=1, .s=NOWHERE, .e=NOWHERE, .w=NOWHERE},
-	.loc[1] = {.id=1, .description="This is another room.", .n=NOWHERE, .s=0, .e=NOWHERE, .w=NOWHERE}
+	.loc[0] = {.id=0, .name="dead", .description="If you can see this room, it is a bug.", .n=1, .s=NOWHERE, .e=NOWHERE, .w=NOWHERE},
+	.loc[1] = {.id=1, .name="room2", .description="This is another room.", .n=NOWHERE, .s=0, .e=NOWHERE, .w=NOWHERE}
 };

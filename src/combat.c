@@ -59,6 +59,7 @@ int combat(Actor* player, Actor* creature) {
 	}
 	else if(hasRun != 0) {
 		printMessage("You manage to flee the fight.");
+		hasRun = 0;
 		return 0;
 	}
 	else if(creature->health <=0) {
