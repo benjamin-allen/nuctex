@@ -96,6 +96,16 @@ void look(Location* room) {
 	printMessageC("================================================================================", ANSI_MAGENTA);
 }
 
+void speak(char* name) {
+	int id = getActorID(name, AIndex);
+	if(id < ACTOR_INDEX_LIMIT && id != -1) {
+		if(AIndex.actor[id].talkText) {
+			printMessageC(AIndex.actor[id].talkText, ANSI_YELLOW);
+		}
+	}
+}
+
+
 /* move(Actor*, char) ---
    Move the creature specified north, south, east, or west based on the char
    passed */
@@ -243,6 +253,10 @@ void callCommand(char* verb, char* noun) {
 		else if(checkOne(noun, "items") == 0) {
 			printInventory(player->actorPos->inv, 0);
 		}
+	}
+
+	else if(checkOne(verb, "talk") == 0) {
+		speak(noun);
 	}
 
 	// Parsing for the items command

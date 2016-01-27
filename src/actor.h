@@ -14,12 +14,16 @@
 
 typedef struct Actor {
 	// name stores the string by which the actor is known to the engine
+	int id;
 	char* name;
 	int health;
 	int strength;
 	int agility;
 	int intelligence;
 	int charisma;
+
+	int isNPC;
+	char* talkText;
 
 	/* The inventory and equipment structures provide a convenient way to access
 	   individual items whilst being sure that they are accessible to a
@@ -35,6 +39,8 @@ typedef struct Actor {
 typedef struct A_index {
 	Actor actor[ACTOR_INDEX_LIMIT];
 }A_index;
+
+int getActorID(char*, A_index);
 
 A_index AIndex;
 
