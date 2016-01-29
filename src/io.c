@@ -239,7 +239,6 @@ char* getInput() {
 void parseInput(char* input) {
 	char* v = strtok(input, " \n");
 	if(!v) {
-		logError("Expected parsed input; received NULL", __func__);
 		return;
 	}
 	char* n = strtok(NULL, " \n");
