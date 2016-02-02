@@ -29,11 +29,11 @@ all at once. Between each version, there is a loosely-defined plan of what the
 next update will focus on.
 
 ###Update Status
-Current version: 0.1e
+Current version: 0.1f
 
-Next planned version: 0.1f
+Next planned version: 0.1g
 
-Major changes in update: Add error handling systems and logging
+Major changes in update: Undetermined 
 
 ###Current features
 * Walk around in an exciting 4-tile world!
