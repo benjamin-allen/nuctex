@@ -58,7 +58,7 @@ int getItemID(char* name, I_index index) {
 					return i;
 				}
 				else {
-					printMessage("ID expected not equivalent to items's index position");
+					logError("ID expected not equivalent to items's index position", __func__);
 					return -1;
 				}
 			}

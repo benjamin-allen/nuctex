@@ -17,7 +17,7 @@ int getActorID(char* name, A_index index) {
 					return i;
 				}
 				else {
-					printMessage("ID expected not equivalent to actor's index location");
+					logError("ID expected not equivalent to actor's index location", __func__);
 					return -1;
 				}
 			}

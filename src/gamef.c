@@ -48,10 +48,10 @@ void look(Location* room) {
 	if(room->s != NOWHERE) {
 		exits = exits + 2;
 	}
-	if(room->e != 0 NOWHERE) {
+	if(room->e != NOWHERE) {
 		exits = exits + 4;
 	}
-	if(room->w != 0 NOWHERE) {
+	if(room->w != NOWHERE) {
 		exits = exits + 8;
 	}
 
@@ -102,6 +102,12 @@ void speak(char* name) {
 		if(AIndex.actor[id].talkText) {
 			printMessageC(AIndex.actor[id].talkText, ANSI_YELLOW);
 		}
+		else {
+			logError("Actor desired has no spoken text field", __func__);
+		}
+	}
+	else {
+		logError("Bad ID returned from index-searching function", __func__);
 	}
 }
 
@@ -149,7 +155,9 @@ void move(Actor* creature, char nsew) {
 				printMessageC("You can't go that way!", ANSI_RED);
 			}
 			break;
-		default : printMessage("There's nowhere to go");
+		default :
+			printMessage("There's nowhere to go");
+			logError("Actor attempted to move out of room without a heading", __func__);
 			break;
 	}
 }
@@ -323,8 +331,8 @@ void callCommand(char* verb, char* noun) {
 		int i = 0;
 		while(i < ACTOR_INDEX_LIMIT) {
 			if(AIndex.actor[i].name) {
-				if(checkOne(noun, AIndex.actor[i].name) == 0) {
-					if(player->actorPos == AIndex.actor[i].actorPos) {
+				if(player->actorPos == AIndex.actor[i].actorPos) {
+					if(checkOne(noun, AIndex.actor[i].name) == 0) {
 						game_isQuit = combat(player, &AIndex.actor[i]);
 					}
 				}
