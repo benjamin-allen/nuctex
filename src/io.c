@@ -16,46 +16,51 @@ char command[64]; 	// filewide char array to be used to command parsing
 print the c-string passed. Can be called with printMessage("This is a string")
 as well. */
 void printMessage(char* message) {
-	/* Create an array of characters that can store 30 lines, at minimum. Use
-	   strcpy to copy the passed string to the array for modification */
-	char tempText[2400];
-	strcpy(tempText, message);
-	int i = 0;
-	
-	/* Delim represents the number of characters that the line needs to be
-	   wrapped at */
-	int delim = 80;
-	for(; tempText[i] != '\0' ; i++) {
-		/* The code inside the if executes when i has reached the delim value.
-		   This will be 80 on the first loop and it's value is variable on
-		   subsequent loops */
-		if(i == delim && i > 0) {
-			/* This statement is used if the character at the delimiting point
-			   is a space */
-			if(tempText[i] == ' ') {
-				tempText[i] = '\n';
-				delim += 80;
-			}
-			/* If the character at this delimiting point is not a space, this
-			   statement executes */
-			else {
-				int j = i;
-				int k = 0;
-				/* The while loop reverse traverses the array until it finds a
-				   space to wrap at */
-				while(tempText[j] != ' ') {
-					j--;
-					k++;
+	if(!message) {
+		logError("Message expected in call; received NULL", __func__);
+	}
+	else {
+		/* Create an array of characters that can store 30 lines, at minimum. Use
+		   strcpy to copy the passed string to the array for modification */
+		char tempText[2400];
+		strcpy(tempText, message);
+		int i = 0;
+		
+		/* Delim represents the number of characters that the line needs to be
+		   wrapped at */
+		int delim = 80;
+		for(; tempText[i] != '\0' ; i++) {
+			/* The code inside the if executes when i has reached the delim value.
+			   This will be 80 on the first loop and it's value is variable on
+			   subsequent loops */
+			if(i == delim && i > 0) {
+				/* This statement is used if the character at the delimiting point
+				   is a space */
+				if(tempText[i] == ' ') {
+					tempText[i] = '\n';
+					delim += 80;
 				}
-				/* Once the loop has found a space, it is replaced with a
-				   newline, and the number of characters it has to traverse
-				   backwards is subtracted from the addition of 80 to delim */
-				tempText[j] = '\n';
-				delim += (80-k);
+				/* If the character at this delimiting point is not a space, this
+				   statement executes */
+				else {
+					int j = i;
+					int k = 0;
+					/* The while loop reverse traverses the array until it finds a
+					   space to wrap at */
+					while(tempText[j] != ' ') {
+						j--;
+						k++;
+					}
+					/* Once the loop has found a space, it is replaced with a
+					   newline, and the number of characters it has to traverse
+					   backwards is subtracted from the addition of 80 to delim */
+					tempText[j] = '\n';
+					delim += (80-k);
+				}
 			}
 		}
+		printf("%s\n", tempText);
 	}
-	printf("%s\n", tempText);
 }
 
 /* printMessageC(char*, char*) ---
@@ -63,51 +68,74 @@ void printMessage(char* message) {
    Using the #define-ed ANSI color codes in io.h is advised, although other
    values could be given as well */
 void printMessageC(char* message, char* color) {
-	/* printMessageC follows the same delimiting process as printMessage. See
-	   above for documentation on the delimiting process */
-	char tempText[2400];
-	strcpy(tempText, message);
-	int i = 0;
-	int delim = 80;
-	for(; tempText[i] != '\0' ; i++) {
-		if(i == delim && i > 0) {
-			if(tempText[i] == ' ') {
-				tempText[i] = '\n';
-				delim += 80;
-			}
-			else {
-				int j = i;
-				int k = 0;
-				while(tempText[j] != ' ') {
-					j--;
-					k++;
+	if(!message) {
+		logError("Message expected in call; received NULL", __func__);
+	}
+	else if(!color) {
+		logError("Color expected in call; received NULL", __func__);
+	}
+	else {
+		/* printMessageC follows the same delimiting process as printMessage. See
+		   above for documentation on the delimiting process */
+		char tempText[2400];
+		strcpy(tempText, message);
+		int i = 0;
+		int delim = 80;
+		for(; tempText[i] != '\0' ; i++) {
+			if(i == delim && i > 0) {
+				if(tempText[i] == ' ') {
+					tempText[i] = '\n';
+					delim += 80;
 				}
-				tempText[j] = '\n';
-				delim += (80-k);
+				else {
+					int j = i;
+					int k = 0;
+					while(tempText[j] != ' ') {
+						j--;
+						k++;
+					}
+					tempText[j] = '\n';
+					delim += (80-k);
+				}
 			}
 		}
+		printf("%s%s%s\n", color, tempText, ANSI_RESET);
 	}
-	printf("%s%s%s\n", color, tempText, ANSI_RESET);
 }
 
 /* printMonster(char*) ---
    Prints the name passed to it as a usable output to be used in the look
    command */
 void printMonster(char* name) {
-	printf("There is a %s here. ", name);
+	if(!name) {
+		logError("Name expected in call; received NULL", __func__);
+	}
+	else {
+		printf("There is a %s here. ", name);
+	}
 }
 
 /* printDamage(int, char*) ---
    Given int damage and the name of the creature, print out how much
    damage a player has done to monster */
 void printDamage(int damage, char* creatureName) {
-	printf("You did %i damage to the %s!\n", damage, creatureName);
+	if(!creatureName) {
+		logError("Name expected in call; received NULL", __func__);
+	}
+	else {
+		printf("You did %i damage to the %s!\n", damage, creatureName);
+	}
 }
 
 /* printStats(int) ---
    Prints a players stats, given a series of integers */
 void printStats(int health) {
-	printf("| %s%i%s HP |\n", ANSI_GREEN, health, ANSI_RESET);
+	if(health < 0) {
+		logError("Negative value given for health", __func__);
+	}
+	else {
+		printf("| %s%i%s HP |\n", ANSI_GREEN, health, ANSI_RESET);
+	}
 }
 
 /* printInventory(Inventory, char*) ---
@@ -210,7 +238,7 @@ char* getInput() {
    an overflow variable and discarded upon the next game loop */
 void parseInput(char* input) {
 	char* v = strtok(input, " \n");
-	if(v == NULL) {
+	if(!v) {
 		return;
 	}
 	char* n = strtok(NULL, " \n");
@@ -228,12 +256,39 @@ void parseInput(char* input) {
 	callCommand(v, n);
 }
 
+void logError(char* errdesc, const char* caller) {
+	FILE *file = fopen("./dat/debug.log", "a");
+	if(!file) {
+		printf("ERROR: Could not open dat/debug.log in append mode");
+	}
+	else {
+		fprintf(file, "ERROR: %s\n", errdesc);
+		fprintf(file, "In function %s\n\n", caller);
+		fclose(file);
+		printf("An error occurred and has been logged.");
+		printf(" Check dat/debug.log for more details.\n");
+		printf("Your previous command may have been voided due to the error.\n");
+	}
+}
+
+void logStart() {
+	FILE *file = fopen("./dat/events.log", "a");
+	if(!file) {
+		logError("Could not open dat/events.log in append mode", __func__);
+	}
+	else {
+		fprintf(file, "---\n");
+		fprintf(file, "NuCTex started\n");
+	}
+}
+
 /* checkOne/Two/Three/Four(char*, ...) ---
    The check functions are a wrapper for strcmp systems, and are meant to be
    used in the place of multiple strcmp operations as a space and time-saving
    operation */
 int checkOne(char* toCheck, char* match) {
-	if(!match) {
+	if(!match || !toCheck) {
+		logError("String passed equivalent to NULL", __func__);
 		return -1;
 	}
 	if(strcmp(toCheck, match) == 0) {
@@ -245,7 +300,8 @@ int checkOne(char* toCheck, char* match) {
 }
 
 int checkTwo(char* toCheck, char* match, char* matchTwo) {
-	if(!match) {
+	if(!match || !toCheck || !matchTwo) {
+		logError("String passed equivalent to NULL", __func__);
 		return -1;
 	}
 	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0) {
@@ -257,7 +313,8 @@ int checkTwo(char* toCheck, char* match, char* matchTwo) {
 }
 
 int checkThree(char* toCheck, char* match, char* matchTwo, char* matchThree) {
-	if(!match) {
+	if(!match || !toCheck || !matchTwo || !matchThree) {
+		logError("String passed equivalent to NULL", __func__);
 		return -1;
 	}
 	if(strcmp(toCheck, match) == 0 || strcmp(toCheck, matchTwo) == 0 ||
@@ -271,7 +328,8 @@ int checkThree(char* toCheck, char* match, char* matchTwo, char* matchThree) {
 
 int checkFour(char* toCheck, char* match, char* matchTwo, char* matchThree,
           char* matchFour) {
-	if(!match) {
+	if(!match || !toCheck || !matchTwo || !matchThree || !matchFour) {
+		logError("String passed equivalent to NULL", __func__);
 		return -1;
 	}
 	if(strcmp(toCheck, match) ==0 || strcmp(toCheck, matchTwo) == 0 ||

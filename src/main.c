@@ -11,6 +11,7 @@
 #include "math.h"
 
 int main() {
+	logStart();
 	// Initialize the pseudo-RNG
 	initRand();
 	// Print the welcome message

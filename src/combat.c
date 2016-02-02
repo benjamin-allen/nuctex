@@ -20,6 +20,10 @@
    of a better death system (current thoughts point towards listing all killed
    monsters by moving the player to the dead location) */
 int combat(Actor* player, Actor* creature) {
+	if(!player || !creature) {
+		logError("Expected two actor; received at least one NULL", __func__);
+		return;
+	}
 	printMessage("The monster stands before you menacingly.");
 	
 	/* This is the main combat loop. It will exit when the player has run, or
@@ -42,7 +46,7 @@ int combat(Actor* player, Actor* creature) {
 			case 3:
 				run(player, creature);
 				break;
-			default: printMessage("AH! THAT'S NOT OKAY!");
+			default:logError("Unexpected integer passed to switch statement", __func__);
 		}
 		
 		/* This function controls monster actions, and is a placeholder until

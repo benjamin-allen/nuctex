@@ -18,7 +18,7 @@ int getLocID(char* name, L_index index) {
 					return i;
 				}
 				else {
-					printMessage("ID expected not equivalent to locations's index position");
+					logError("ID expected not equivalent to locations's index position", __func__);
 					return -1;
 				}
 			}

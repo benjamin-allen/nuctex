@@ -34,6 +34,10 @@ void printInventory(Inventory, char*);
 void printEquipment(Equipment, char*);
 void describeItem(Item*);
 
+// Error Handling functions
+void logError(char*, const char*);
+void logStart();
+
 // Parser Functions
 void parseInput(char*);
 void callCommand(char*, char*); //Defined in gamef.c
