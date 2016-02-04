@@ -269,8 +269,19 @@ void callCommand(char* verb, char* noun) {
 
 	// Parsing for the items command
 	else if(checkTwo(verb, "items", "inventory") == 0) {
-		printInventory(player->inv, player->name);
-		printEquipment(player->eqp, player->name);
+		if(checkOne(noun, "!n") == 0) {
+			printInventory(player->inv, player->name);
+			printEquipment(player->eqp, player->name);
+		}
+		else {
+			int actorID = getActorID(noun, AIndex);
+			if(actorID < ACTOR_INDEX_LIMIT && actorID != -1) {
+				Inventory* npcInv = &AIndex.actor[actorID].inv;
+				Equipment* npcEqp = &AIndex.actor[actorID].eqp;
+				printInventory(*npcInv, AIndex.actor[actorID].name);
+				printEquipment(*npcEqp, AIndex.actor[actorID].name);
+			}
+		}
 	}
 
 	// Parsing for the describe command
