@@ -14,19 +14,8 @@ can create a game with locations, monsters, and puzzles to solve.
 ##Development Status
 NuCTex went into alpha on January 5, 2016, and is now at version 0.1e
 
-It still has very few enjoyable, game-like qualities implemented, but 0.1 is a
-functional release that can be used to experiment with some of the engine's
-systems. The alpha version numbers will stay in the 0.1 range to reflect the
-incompleteness of the engine and the large number of features still required to
-be implemented. 0.1 releases focus on adding mechanics, which is the focus of
-the alpha. Beta releases will focus on cleaning up the mechanics and adding any
-minor features, as well as adding in the main feature of the engine (file-based
-content creation).
-
-Because the project is in alpha, releases will be structured more traditionally,
-with the updates to a specific part of the game written, tested, and then pushed
-all at once. Between each version, there is a loosely-defined plan of what the
-next update will focus on.
+Due to school and work requirements, NuCTex is currently on an indefinite
+hiatus.
 
 ###Update Status
 Current version: 0.1f
